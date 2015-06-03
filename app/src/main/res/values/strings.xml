@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">GMS_Meal</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="Lunch">점심</string>
+    <string name="Dinner">저녁</string>
+    <string name="Rate">평점</string>
+</resources>
