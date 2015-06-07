@@ -92,11 +92,12 @@ public class RecyclerViewFragment extends Fragment {
         protected String[] doInBackground(Integer... AddDay) {
             // String date, day, lunchText, dinnerText;
             String[] info = new String[4];
+            URL url = null; // URL변수선언
+            HttpURLConnection urlConnection = null; // URL연결요청 변수 선언
+            BufferedInputStream buf = null;// 버퍼에 입력할 변수
             try {// 시도함
 
-                URL url = null; // URL변수선언
-                HttpURLConnection urlConnection = null; // URL연결요청 변수 선언
-                BufferedInputStream buf = null;// 버퍼에 입력할 변수
+
 
                 Date now = new Date();
 
@@ -200,6 +201,8 @@ public class RecyclerViewFragment extends Fragment {
                 // Dinner_Text.setText("데이터 연결을 확인해 주십시오.");
                 info[3] = "데이터 연결을 확인해 주십시오.";
 
+            }finally {
+                urlConnection.disconnect();
             }
 
             for (int i = 0; i < info.length; i++) {

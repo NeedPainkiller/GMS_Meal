@@ -3,9 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/GMS_Meal.iml" filepath="$PROJECT_DIR$/GMS_Meal.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Material_Drawer/Material_Drawer.iml" filepath="$PROJECT_DIR$/Material_Drawer/Material_Drawer.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/svg-android/svg-android.iml" filepath="$PROJECT_DIR$/svg-android/svg-android.iml" />
     </modules>
   </component>
 </project>
-

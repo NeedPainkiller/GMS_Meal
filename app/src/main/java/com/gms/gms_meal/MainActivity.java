@@ -14,8 +14,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 import com.github.florent37.materialviewpager.MaterialViewPager;
 import com.gms.gms_meal.Dev.DeveloperActivity;
 import com.romainpiel.shimmer.Shimmer;
@@ -24,7 +27,7 @@ import com.romainpiel.shimmer.ShimmerTextView;
 import java.util.Locale;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements OnClickListener {
 
     private MaterialViewPager materialViewPager;
     private DrawerLayout drawerLayout;
@@ -34,6 +37,15 @@ public class MainActivity extends ActionBarActivity {
     private Toolbar toolbar;
     Shimmer shimmer;
     ShimmerTextView shimmerTextView;
+
+    FloatingActionMenu menu;
+
+    FloatingActionButton Main_facebook;
+    FloatingActionButton Main_refresh;
+    FloatingActionButton Main_rate;
+    FloatingActionButton Main_save;
+    FloatingActionButton Main_Dinner;
+    FloatingActionButton Main_Lunch;
 
 
     @Override
@@ -45,7 +57,7 @@ public class MainActivity extends ActionBarActivity {
 
         materialViewPager = (MaterialViewPager) findViewById(R.id.materialViewPager);
 
-
+//    floatingActionButton.setImageDrawable();
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         nav = (View) findViewById(R.id.left_drawer);
         shimmerTextView = (ShimmerTextView) findViewById(R.id.logo_white);
@@ -69,6 +81,21 @@ public class MainActivity extends ActionBarActivity {
             }
         }
 
+        menu = (FloatingActionMenu) findViewById(R.id.MainMenu);
+        menu.setClosedOnTouchOutside(true);
+
+        Main_facebook = (FloatingActionButton) findViewById(R.id.Main_facebook);
+        Main_facebook.setOnClickListener(this);
+        Main_refresh = (FloatingActionButton) findViewById(R.id.Main_refresh);
+        Main_refresh.setOnClickListener(this);
+        Main_rate = (FloatingActionButton) findViewById(R.id.Main_rate);
+        Main_rate.setOnClickListener(this);
+        Main_save = (FloatingActionButton) findViewById(R.id.Main_save);
+        Main_save.setOnClickListener(this);
+        Main_Lunch = (FloatingActionButton) findViewById(R.id.Main_Lunch);
+        Main_Lunch.setOnClickListener(this);
+        Main_Dinner = (FloatingActionButton) findViewById(R.id.Main_Dinner);
+        Main_Dinner.setOnClickListener(this);
 
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, 0, 0);
         actionBarDrawerToggle.syncState();
@@ -87,7 +114,7 @@ public class MainActivity extends ActionBarActivity {
                         RecyclerViewFragment lunchRecyclerViewFragment = new RecyclerViewFragment(0).getFrag();
                         return lunchRecyclerViewFragment;
                     case 1:
-                         RecyclerViewFragment dinnerRecyclerViewFragment = new RecyclerViewFragment(1).getFrag();
+                        RecyclerViewFragment dinnerRecyclerViewFragment = new RecyclerViewFragment(1).getFrag();
                         return dinnerRecyclerViewFragment;
 //                    case 2:
 //                        return ScrollFragment.newInstance();
@@ -151,7 +178,7 @@ public class MainActivity extends ActionBarActivity {
                     case 0:
                         return getString(R.string.Lunch).toUpperCase(locale);
                     case 1:
-                        return  getString(R.string.Dinner).toUpperCase(locale);
+                        return getString(R.string.Dinner).toUpperCase(locale);
                     case 2:
                         return "rate";
                     case 3:
@@ -207,5 +234,25 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.Main_facebook:
+                break;
+            case R.id.Main_refresh:
+                break;
+            case R.id.Main_rate:
+                break;
+            case R.id.Main_save:
+                break;
+            case R.id.Main_Lunch:
+                Main_Lunch.setImageResource(R.mipmap.ic_alarm_on);
+                break;
+            case R.id.Main_Dinner:
+                Main_Dinner.setImageResource(R.mipmap.ic_alarm_on);
+                break;
+        }
     }
 }

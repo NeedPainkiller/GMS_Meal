@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="102dp"
+        android:background="#000000"
+        android:elevation="4dp"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif-light"
+        android:maxLines="3"
+        android:paddingLeft="60dp"
+        android:paddingRight="8dp"
+        android:paddingTop="8dp"
+        android:text="head"
+        android:textColor="@android:color/white"
+        android:textSize="22sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header"
+        android:padding="16dp"
+        android:text="lage"
+        android:textSize="18sp" />
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/MainMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginTop="10dp"
+        fab:menu_animationDelayPerItem="0"
+        fab:menu_colorNormal="#FFB805"
+        fab:menu_colorPressed="#F2AB00"
+        fab:menu_colorRipple="#D99200"
+        fab:menu_labels_hideAnimation="@anim/jump_to_down"
+        fab:menu_labels_showAnimation="@anim/jump_from_down"
+        fab:menu_labels_style="@style/FloatMenuStyle"
+        fab:menu_shadowColor="#444">
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/Main_facebook"
+            style="@style/FloatButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_thumb_up"
+            fab:fab_label="페이스북" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/Main_refresh"
+            style="@style/FloatButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_refresh"
+            fab:fab_label="급식 데이터 새로받기 (저장 필수)" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/Main_rate"
+            style="@style/FloatButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_grade"
+            fab:fab_label="오늘의 평가" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/Main_save"
+            style="@style/FloatButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_file_download"
+            fab:fab_label="급식 데이터 저장" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/Main_Dinner"
+            style="@style/FloatButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_alarm"
+            fab:fab_label="석식알림(OFF)" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/Main_Lunch"
+            style="@style/FloatButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_alarm"
+            fab:fab_label="중식알림(OFF)" />
+
+    </com.github.clans.fab.FloatingActionMenu>
+
+
+</RelativeLayout>
