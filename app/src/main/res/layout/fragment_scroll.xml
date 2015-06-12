@@ -22,12 +22,21 @@
             android:layout_marginTop="@dimen/cardMarginVertical"
             android:background="@android:color/white"
             app:cardElevation="4dp">
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="1000dp"
-                android:orientation="vertical">
+                >
 
-            </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="준비중인 서비스 입니다."
+
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true" />
+
+            </RelativeLayout>
 
         </android.support.v7.widget.CardView>
     </LinearLayout>

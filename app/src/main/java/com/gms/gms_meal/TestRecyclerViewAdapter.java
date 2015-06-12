@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.TextView;
 
-import com.gms.gms_meal.Dev.MealItemData;
-
 import java.util.ArrayList;
 
 /**

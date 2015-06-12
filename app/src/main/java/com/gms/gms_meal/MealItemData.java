@@ -1,4 +1,4 @@
-package com.gms.gms_meal.Dev;
+package com.gms.gms_meal;
 
 /**
  * Created by kam6376 on 2015-05-31.

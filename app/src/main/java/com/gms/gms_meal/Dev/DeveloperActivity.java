@@ -36,31 +36,31 @@ public class DeveloperActivity extends FragmentActivity {
         developerPagerAdapter.setPager(viewPager); //only for this transformer
 
         Bundle bNina = new Bundle();
-        bNina.putInt("image", R.mipmap.dev1);
+        bNina.putInt("image", R.mipmap.kang);
 
-        bNina.putString("name", "Kang YoungWon");
+        bNina.putString("name", "°­¿µ¿ø");
 
         bNina.putString("detail", "Developer");
         DeveloperPagerFragment pfNina = new DeveloperPagerFragment();
         pfNina.setArguments(bNina);
 
         Bundle bNiju = new Bundle();
-        bNiju.putInt("image", R.mipmap.dev2);
-        bNiju.putString("name", "Kim JunWhui");
+        bNiju.putInt("image", R.mipmap.jun);
+        bNiju.putString("name", "±èÁØÈÖ");
         bNiju.putString("detail", "Planner");
         DeveloperPagerFragment pfNiju = new DeveloperPagerFragment();
         pfNiju.setArguments(bNiju);
 
         Bundle bYuki = new Bundle();
-        bYuki.putInt("image", R.mipmap.dev3);
-        bYuki.putString("name", "An ByoungChan");
+        bYuki.putInt("image", R.mipmap.an);
+        bYuki.putString("name", "¾Èº´Âù");
         bYuki.putString("detail", "Designer");
         DeveloperPagerFragment pfYuki = new DeveloperPagerFragment();
         pfYuki.setArguments(bYuki);
 
         Bundle bKero = new Bundle();
-        bKero.putInt("image", R.mipmap.dev3);
-        bKero.putString("name", "Park sungcherl");
+        bKero.putInt("image", R.mipmap.sung);
+        bKero.putString("name", "¹Ú¼ºÃ¶");
         bKero.putString("detail", "Marketing");
         DeveloperPagerFragment pfKero = new DeveloperPagerFragment();
         pfKero.setArguments(bKero);

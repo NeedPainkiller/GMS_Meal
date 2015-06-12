@@ -36,12 +36,13 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
+            android:layout_marginBottom="30dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            app:menu_icon="@mipmap/ic_widgets"
             app:menu_animationDelayPerItem="100"
             app:menu_colorNormal="#4169e1"
             app:menu_colorPressed="#000099"
+            app:menu_icon="@mipmap/ic_widgets"
             app:menu_labels_hideAnimation="@anim/hide_to_bottom"
             app:menu_labels_showAnimation="@anim/show_from_bottom"
             app:menu_labels_style="@style/FloatMenuStyle"
@@ -80,16 +81,6 @@
                 app:fab_colorPressed="#ffff00"
                 app:fab_label="오늘의 평가" />
 
-            <com.github.clans.fab.FloatingActionButton
-                android:id="@+id/Main_save"
-                style="@style/FloatButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:src="@mipmap/ic_file_download"
-                app:fab_colorNormal="#ff8c00"
-                app:fab_colorPressed="#ffa500"
-                app:fab_label="급식 데이터 저장" />
 
             <com.github.clans.fab.FloatingActionButton
                 android:id="@+id/Main_Dinner"
