@@ -12,7 +12,7 @@
         android:allowBackup="true"
 
         android:hardwareAccelerated="true"
-        android:icon="@mipmap/ic_launcher_main"
+        android:icon="@mipmap/launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:theme="@style/AppTheme"
@@ -30,6 +30,11 @@
         <activity
             android:configChanges="orientation|screenSize"
             android:name=".Dev.DeveloperActivity">
+
+        </activity>
+        <activity
+            android:configChanges="orientation|screenSize"
+            android:name=".OpenSource">
 
         </activity>
 

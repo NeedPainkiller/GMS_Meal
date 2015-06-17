@@ -1,4 +1,4 @@
-package com.gms.gms_meal;
+package com.gms.gms_meal.Meal_Package;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,12 +7,14 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.TextView;
 
+import com.gms.gms_meal.R;
+
 import java.util.ArrayList;
 
 /**
  * Created by florentchampigny on 24/04/15.
  */
-public class TestRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class MealRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     ArrayList<MealItemData> mealItemDataArrayList;
 
@@ -45,7 +47,7 @@ public class TestRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     }
 
-    public TestRecyclerViewAdapter(ArrayList<MealItemData> mealItemDataArrayList) {
+    public MealRecyclerViewAdapter(ArrayList<MealItemData> mealItemDataArrayList) {
         this.mealItemDataArrayList = mealItemDataArrayList;
     }
 
@@ -71,17 +73,17 @@ public class TestRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
         switch (viewType) {
             case TYPE_HEADER: {
 //                view = LayoutInflater.from(parent.getContext())
-//                        .inflate(R.layout.list_item_card_big, parent, false);
+//                        .inflate(R.layout.meal_item_card_big, parent, false);
 //                return new RecyclerView.ViewHolder(view) {
 //                };
-                return new BigCardMeal(LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_card_big, parent, false));
+                return new BigCardMeal(LayoutInflater.from(parent.getContext()).inflate(R.layout.meal_item_card_big, parent, false));
             }
             case TYPE_CELL: {
 //                view = LayoutInflater.from(parent.getContext())
-//                        .inflate(R.layout.list_item_card_small, parent, false);
+//                        .inflate(R.layout.meal_item_card_small, parent, false);
 //                return new RecyclerView.ViewHolder(view) {
 //                };
-                return new SmallCardMeal(LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_card_small, parent, false));
+                return new SmallCardMeal(LayoutInflater.from(parent.getContext()).inflate(R.layout.meal_item_card_small, parent, false));
 
             }
         }

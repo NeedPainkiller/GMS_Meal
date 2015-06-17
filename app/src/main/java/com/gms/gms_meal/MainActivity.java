@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.andexert.library.RippleView;
 import com.andexert.library.RippleView.OnRippleCompleteListener;
@@ -29,6 +30,9 @@ import com.github.florent37.materialviewpager.MaterialViewPager;
 import com.gms.gms_meal.Alarm.AlarmManagement;
 import com.gms.gms_meal.DB.CreateDB;
 import com.gms.gms_meal.Dev.DeveloperActivity;
+import com.gms.gms_meal.Meal_Package.DinnerViewFragment;
+import com.gms.gms_meal.Meal_Package.LunchViewFragment;
+import com.gms.gms_meal.lib.FontAwesomeText;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerTextView;
 
@@ -39,27 +43,27 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 
     private MaterialViewPager materialViewPager;
     private DrawerLayout drawerLayout;
-    private View nav;
-    ActionBarDrawerToggle actionBarDrawerToggle;
+    private LinearLayout nav;
+    private ActionBarDrawerToggle actionBarDrawerToggle;
 
-    RippleView dev, open, git;
-
+    private RippleView developerRoppleView, opensourceRippleView, githubRippleView;
+    private FontAwesomeText developerFont, opensourceFont, githubFont;
 
     private Toolbar toolbar;
-    Shimmer shimmer;
-    ShimmerTextView shimmerTextView, devSim, openSim, gitSim;
+    private Shimmer shimmer;
+    private ShimmerTextView shimmerTextView, developerSim, opensourceSim, githubSim;
 
-    FloatingActionMenu menu;
+    private FloatingActionMenu menu;
 
-    FloatingActionButton Main_facebook;
-    FloatingActionButton Main_refresh;
-    FloatingActionButton Main_rate;
-    FloatingActionButton Main_Dinner;
-    FloatingActionButton Main_Lunch;
+    private FloatingActionButton Main_facebook;
+    private FloatingActionButton Main_refresh;
+    private FloatingActionButton Main_rate;
+    private FloatingActionButton Main_Dinner;
+    private FloatingActionButton Main_Lunch;
 
 
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 
     public static Context context;
 
@@ -71,15 +75,36 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
         context = MainActivity.this;
         setTitle("");
 
+        developerRoppleView = (RippleView) findViewById(R.id.nav_RippleDeveloper);
+        developerRoppleView.setOnRippleCompleteListener(this);
+        opensourceRippleView = (RippleView) findViewById(R.id.nav_RippleOpensource);
+        opensourceRippleView.setOnRippleCompleteListener(this);
+        githubRippleView = (RippleView) findViewById(R.id.nav_RippleGithub);
+        githubRippleView.setOnRippleCompleteListener(this);
+
+        developerFont = (FontAwesomeText) findViewById(R.id.nav_FontDeveloper);
+//        developerFont.startFlashing(this, true, FontAwesomeText.AnimationSpeed.SLOW);
+        opensourceFont = (FontAwesomeText) findViewById(R.id.nav_FontOpensource);
+//        opensourceFont.startFlashing(this, true, FontAwesomeText.AnimationSpeed.MEDIUM);
+        githubFont = (FontAwesomeText) findViewById(R.id.nav_FontGithub);
+//        githubFont.startRotate(this, true, FontAwesomeText.AnimationSpeed.SLOW);
+
+//        shimmerTextView = (ShimmerTextView) findViewById(R.id.logo_white);
+        shimmer = new Shimmer();
+//        shimmer.start(shimmerTextView);
+
+        developerSim = (ShimmerTextView) findViewById(R.id.nav_ShimmerDeveloper);
+        shimmer.start(developerSim);
+        opensourceSim = (ShimmerTextView) findViewById(R.id.nav_ShimmerOpensource);
+        shimmer.start(opensourceSim);
+        githubSim = (ShimmerTextView) findViewById(R.id.nav_ShimmerGithub);
+        shimmer.start(githubSim);
 
         materialViewPager = (MaterialViewPager) findViewById(R.id.materialViewPager);
 
 //    floatingActionButton.setImageDrawable();
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        nav = (View) findViewById(R.id.left_drawer);
-        shimmerTextView = (ShimmerTextView) findViewById(R.id.logo_white);
-        shimmer = new Shimmer();
-        shimmer.start(shimmerTextView);
+        nav = (LinearLayout) findViewById(R.id.left_drawer);
 
 
         toolbar = materialViewPager.getToolbar();
@@ -233,8 +258,8 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
                         return getString(R.string.Dinner).toUpperCase(locale);
                     case 2:
                         return "평점";
-//                    case 3:
-//                        return "Sample";
+                    case 3:
+                        return "GMS스레";
                 }
                 return "";
             }
@@ -285,6 +310,17 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
     }
 
     @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+        if (drawerLayout.isDrawerOpen(nav)) {
+            drawerLayout.closeDrawer(nav);
+
+        } else {
+            finish();
+        }
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.Main_facebook:    //ok
@@ -330,12 +366,14 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
                     AlarmManagement alarmManagement = new AlarmManagement(getApplicationContext());
                     if (!sharedPreferences.getBoolean("lunch", false)) {
                         Main_Lunch.setImageResource(R.mipmap.ic_alarm_on);
+                        Main_Lunch.setLabelText("중식알림(11:00)");
                         editor.putBoolean("lunch", true);
                         alarmManagement.setrAlarm(true);
                     } else {
                         Main_Lunch.setImageResource(R.mipmap.ic_alarm);
                         editor.putBoolean("lunch", false);
                         alarmManagement.cancleAlarm(true);
+                        Main_Lunch.setLabelText("중식알림(OFF)");
                     }
                     editor.commit();
                 } else {
@@ -348,10 +386,12 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
                     AlarmManagement alarmManagement = new AlarmManagement(getApplicationContext());
                     if (!sharedPreferences.getBoolean("dinner", false)) {
                         Main_Dinner.setImageResource(R.mipmap.ic_alarm_on);
+                        Main_Dinner.setLabelText("석식알림(5:00)");
                         editor.putBoolean("dinner", true);
                         alarmManagement.setrAlarm(false);
                     } else {
                         Main_Dinner.setImageResource(R.mipmap.ic_alarm);
+                        Main_Dinner.setLabelText("석식알림(OFF)");
                         editor.putBoolean("dinner", false);
                         alarmManagement.cancleAlarm(false);
                     }
@@ -368,14 +408,15 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
     @Override
     public void onComplete(RippleView rippleView) {
         switch (rippleView.getId()) {
-//            case R.id.nav_developers:
-//                startActivity(new Intent(MainActivity.this, DeveloperActivity.class));
-//                break;
-//            case R.id.nav_opensource:
-//                break;
-//            case R.id.nav_Github:
-//                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/kam6512/GMS_Meal")));
-//                break;
+            case R.id.nav_RippleDeveloper:
+                startActivity(new Intent(MainActivity.this, DeveloperActivity.class));
+                break;
+            case R.id.nav_RippleOpensource:
+                startActivity(new Intent(MainActivity.this, OpenSource.class));
+                break;
+            case R.id.nav_RippleGithub:
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/kam6512/GMS_Meal")));
+                break;
         }
     }
 }

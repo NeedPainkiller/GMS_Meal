@@ -22,7 +22,7 @@
             app:viewpager_headerHeight="200dp"
             app:viewpager_hideLogoWithFade="false"
             app:viewpager_hideToolbarAndTitle="true"
-            app:viewpager_logo="@layout/header_logo_text"
+            app:viewpager_logo="@layout/header_logo_2"
             app:viewpager_logoMarginTop="100dp"
             app:viewpager_pagerTitleStrip="@layout/material_view_pager_pagertitlestrip_newstand"
             app:viewpager_parallaxHeaderFactor="1.5">
@@ -55,8 +55,8 @@
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:src="@mipmap/ic_thumb_up"
-                app:fab_colorNormal="#000099"
-                app:fab_colorPressed="#4169e1"
+                app:fab_colorNormal="#3b5998"
+                app:fab_colorPressed="#000080"
                 app:fab_label="페이스북" />
 
             <com.github.clans.fab.FloatingActionButton
@@ -66,8 +66,8 @@
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:src="@mipmap/ic_refresh"
-                app:fab_colorNormal="#00ff00"
-                app:fab_colorPressed="#32cd32"
+                app:fab_colorNormal="#32cd32"
+                app:fab_colorPressed="#228b22"
                 app:fab_label="급식 데이터 새로받기 (저장 필수)" />
 
             <com.github.clans.fab.FloatingActionButton
@@ -77,8 +77,8 @@
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:src="@mipmap/ic_grade"
-                app:fab_colorNormal="#ffd700"
-                app:fab_colorPressed="#ffff00"
+                app:fab_colorNormal="#ffff00"
+                app:fab_colorPressed="#ffd700"
                 app:fab_label="오늘의 평가" />
 
 
@@ -89,8 +89,8 @@
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:src="@mipmap/ic_alarm"
-                app:fab_colorNormal="#7b68ee"
-                app:fab_colorPressed="#8a2be2"
+                app:fab_colorNormal="#d2691e"
+                app:fab_colorPressed="#b22222"
                 app:fab_label="석식알림(OFF)" />
 
             <com.github.clans.fab.FloatingActionButton

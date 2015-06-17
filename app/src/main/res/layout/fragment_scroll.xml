@@ -32,7 +32,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="준비중인 서비스 입니다."
-
+                    android:textColor="#000000"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true" />
 

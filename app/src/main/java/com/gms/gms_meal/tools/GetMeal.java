@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
 
-import com.gms.gms_meal.DinnerViewFragment;
-import com.gms.gms_meal.LunchViewFragment;
+import com.gms.gms_meal.Meal_Package.DinnerViewFragment;
+import com.gms.gms_meal.Meal_Package.LunchViewFragment;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;

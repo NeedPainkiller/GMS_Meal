@@ -16,5 +16,8 @@
         <attr name="viewpager_headerAdditionalHeight" format="dimension"/>
 
     </declare-styleable>
+    <declare-styleable name="FontAwesomeText">
+        <attr name="fa_icon" format="string" />
+    </declare-styleable>
 
 </resources>

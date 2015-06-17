@@ -7,9 +7,9 @@
     android:fitsSystemWindows="true"
     android:adjustViewBounds="true"
     android:layout_centerHorizontal="true"
-    android:text=""
+    android:text="Hello GMS!"
     android:textColor="#444"
     android:textSize="45sp"
-    app:reflectionColor="#f00">
+    app:reflectionColor="#ffffff">
 
 </com.romainpiel.shimmer.ShimmerTextView>

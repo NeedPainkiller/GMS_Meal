@@ -1,4 +1,4 @@
-package com.gms.gms_meal;
+package com.gms.gms_meal.Meal_Package;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -18,6 +18,7 @@ import com.github.florent37.materialviewpager.MaterialViewPagerHelper;
 import com.github.florent37.materialviewpager.adapter.RecyclerViewMaterialAdapter;
 import com.gms.gms_meal.DB.CreateDB;
 import com.gms.gms_meal.DB.DataBaseAdmin;
+import com.gms.gms_meal.R;
 import com.gms.gms_meal.tools.GetMeal;
 
 import java.text.SimpleDateFormat;
@@ -71,7 +72,7 @@ public class DinnerViewFragment extends Fragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setHasFixedSize(true);
-        mAdapter = new RecyclerViewMaterialAdapter(new TestRecyclerViewAdapter(mealItemDataArrayList));
+        mAdapter = new RecyclerViewMaterialAdapter(new MealRecyclerViewAdapter(mealItemDataArrayList));
 //        mRecyclerView.setAdapter(new SlideInLeftAnimationAdapter(mAdapter));
         mRecyclerView.setAdapter(mAdapter);
 
