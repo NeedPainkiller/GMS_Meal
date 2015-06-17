@@ -35,23 +35,24 @@ public class RateViewFragment extends Fragment {
 
     GetRatePHP getRatePHP;
 
-    RateViewFragment(Context context){
+    public RateViewFragment(Context context) {
         this.context = context;
     }
-    RateViewFragment getFrag(){
-        return  this;
+
+    public RateViewFragment getFrag() {
+        return this;
     }
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater,@Nullable ViewGroup container,@Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_recyclerview, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mRecyclerView = (RecyclerView)view.findViewById(R.id.recyclerView);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setHasFixedSize(true);
@@ -61,10 +62,17 @@ public class RateViewFragment extends Fragment {
 
         MaterialViewPagerHelper.registerRecyclerView(getActivity(), mRecyclerView, null);
 
-        getRateHandler = new Handler(){
+        getRateHandler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
+
+                String[] rate = msg.getData().getStringArray("rate");
+
+                rateItemDataArrayList.add(new RateItemData(rate[0], rate[1], rate[2]));
+
+                mAdapter.notifyDataSetChanged();
+
             }
         };
     }

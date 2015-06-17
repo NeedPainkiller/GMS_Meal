@@ -58,12 +58,12 @@ public class LunchViewFragment extends Fragment {
 //
 //        return new RecyclerViewFragment();
 //    }
-    LunchViewFragment(int position, Context context) {
+    public LunchViewFragment(int position, Context context) {
         pos = position;
         this.context = context;
     }
 
-    LunchViewFragment getFrag() {
+    public LunchViewFragment getFrag() {
         return this;
     }
 

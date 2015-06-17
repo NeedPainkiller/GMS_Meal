@@ -1,7 +1,11 @@
 package com.gms.gms_meal.tools;
 
 import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Message;
 import android.util.Log;
+
+import com.gms.gms_meal.Rate_Package.RateViewFragment;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -48,7 +52,7 @@ public class GetRatePHP extends AsyncTask<String, Void, String> {
             return result;
         } catch (Exception e) {
 
-        }finally {
+        } finally {
             httpClient = null;
             httpGet.abort();
         }
@@ -59,23 +63,44 @@ public class GetRatePHP extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String resource) {
 //        super.onPostExecute(resource);
-        String ratew;
-        String num;
-        String date;
+        String rate = "";
+        String num = "";
+        String date = "";
 
-        String jsonLine;
+        Message message = RateViewFragment.getRateHandler.obtainMessage();
+        Bundle data = new Bundle();
 
         try {
-            if(resource == null){
-                Log.e("postErr","resource is null");
+            if (resource == null) {
+                Log.e("postErr", "resource is null");
                 resource = "";
             }
 
             JSONObject root = new JSONObject(resource);
-            JSONArray jsonArray = root.getJSONArray("");
+            JSONArray jsonArray = root.getJSONArray("results");
 
-        }catch (Exception e){
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                rate = jsonObject.getString("rate");
+                num = jsonObject.getString("num");
+                date = jsonObject.getString("date");
 
+                this.rate[0] = rate;
+                this.rate[1] = num;
+                this.rate[2] = date;
+
+                data.putStringArray("rate", this.rate);
+                message.setData(data);
+                RateViewFragment.getRateHandler.sendMessage(message);
+
+            }
+            Log.e("postJSON", rate+"/"+num+"/"+date);
+        } catch (Exception e) {
+            Log.e("postErr", "JSON is fucked");
         }
+
+
+
+
     }
 }

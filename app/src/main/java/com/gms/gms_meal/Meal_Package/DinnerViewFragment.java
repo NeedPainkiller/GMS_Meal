@@ -49,12 +49,12 @@ public class DinnerViewFragment extends Fragment {
 //
 //        return new RecyclerViewFragment();
 //    }
-    DinnerViewFragment(int position, Context context) {
+    public DinnerViewFragment(int position, Context context) {
         pos = position;
         this.context = context;
     }
 
-    DinnerViewFragment getFrag() {
+    public DinnerViewFragment getFrag() {
         return this;
     }
 

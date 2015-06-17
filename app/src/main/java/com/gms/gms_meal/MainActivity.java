@@ -32,6 +32,7 @@ import com.gms.gms_meal.DB.CreateDB;
 import com.gms.gms_meal.Dev.DeveloperActivity;
 import com.gms.gms_meal.Meal_Package.DinnerViewFragment;
 import com.gms.gms_meal.Meal_Package.LunchViewFragment;
+import com.gms.gms_meal.Rate_Package.RateViewFragment;
 import com.gms.gms_meal.lib.FontAwesomeText;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerTextView;
@@ -194,7 +195,8 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 //                    case 2:
 //                        return ScrollFragment.newInstance();
                     default:
-                        return ScrollFragment.newInstance();
+                        RateViewFragment rateViewFragment = new RateViewFragment(getApplicationContext()).getFrag();
+                        return  rateViewFragment;
                 }
 
             }
