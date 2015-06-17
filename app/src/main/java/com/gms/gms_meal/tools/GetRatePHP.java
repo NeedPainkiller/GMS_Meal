@@ -59,7 +59,7 @@ public class GetRatePHP extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String resource) {
 //        super.onPostExecute(resource);
-        String rate;
+        String ratew;
         String num;
         String date;
 
