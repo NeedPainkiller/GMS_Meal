@@ -5,10 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.gms.gms_meal.R;
+import com.gms.gms_meal.lib.ColoredRatingBar;
 import com.gms.gms_meal.lib.FontAwesomeText;
 
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class RateRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
     static final int TYPE_CELL = 1;
 
     public static class BigCardRate extends RecyclerView.ViewHolder {
-        public RatingBar bigRatingBar;
+        public ColoredRatingBar bigRatingBar;
         public TextView bigRate;
         public FontAwesomeText bigFontNum;
         public TextView bigNum;
@@ -35,7 +35,7 @@ public class RateRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
         public BigCardRate(View itemView) {
             super(itemView);
 
-            bigRatingBar = (RatingBar) itemView.findViewById(R.id.bigRatingBar);
+            bigRatingBar = (ColoredRatingBar) itemView.findViewById(R.id.bigRatingBar);
             bigRate = (TextView) itemView.findViewById(R.id.bigRate);
             bigFontNum = (FontAwesomeText) itemView.findViewById(R.id.bigFontNum);
             bigNum = (TextView) itemView.findViewById(R.id.bigNum);
@@ -44,7 +44,7 @@ public class RateRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
     public static class SmallCardRate extends RecyclerView.ViewHolder {
-        public RatingBar smallRatingBar;
+        public ColoredRatingBar smallRatingBar;
         public TextView smallRate;
         public FontAwesomeText smallFontNum;
         public TextView smallNum;
@@ -53,7 +53,7 @@ public class RateRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
         public SmallCardRate(View itemView) {
             super(itemView);
 
-            smallRatingBar = (RatingBar) itemView.findViewById(R.id.smallRatingBar);
+            smallRatingBar = (ColoredRatingBar) itemView.findViewById(R.id.smallRatingBar);
             smallRate = (TextView) itemView.findViewById(R.id.smallRate);
             smallFontNum = (FontAwesomeText) itemView.findViewById(R.id.smallFontNum);
             smallNum = (TextView) itemView.findViewById(R.id.smallNum);
@@ -77,7 +77,7 @@ public class RateRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     @Override
     public int getItemCount() {
-        return 0;
+        return rateItemDataArrayList.size();
     }
 
     @Override
@@ -103,8 +103,9 @@ public class RateRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
             case TYPE_HEADER:
                 BigCardRate bigCardRate = (BigCardRate) holder;
                 bigCardRate.bigRatingBar.setRating(Float.parseFloat(rateItemDataArrayList.get(position).getRate()));
+
                 bigCardRate.bigRate.setText(rateItemDataArrayList.get(position).getRate());
-                bigCardRate.bigNum.setText(rateItemDataArrayList.get(position).getNum());
+                bigCardRate.bigNum.setText(rateItemDataArrayList.get(position).getNum()+"Έν");
                 bigCardRate.bigDate.setText(rateItemDataArrayList.get(position).getDate());
                 break;
             case TYPE_CELL:
@@ -112,7 +113,7 @@ public class RateRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
                 SmallCardRate smallCardRate = (SmallCardRate) holder;
                 smallCardRate.smallRatingBar.setRating(Float.parseFloat(rateItemDataArrayList.get(position).getRate()));
                 smallCardRate.smallRate.setText(rateItemDataArrayList.get(position).getRate());
-                smallCardRate.smallNum.setText(rateItemDataArrayList.get(position).getNum());
+                smallCardRate.smallNum.setText(rateItemDataArrayList.get(position).getNum()+"Έν");
                 smallCardRate.smallDate.setText(rateItemDataArrayList.get(position).getDate());
                 break;
         }

@@ -56,15 +56,16 @@
 
             </LinearLayout>
 
-            <RatingBar
+            <com.gms.gms_meal.lib.ColoredRatingBar
                 android:id="@+id/smallRatingBar"
+                style="@style/coloredRatingBarStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:background="@null"
-                android:rating="2.4"
+                app:rating="2.4"
                 android:layout_margin="10dp" />
 
         </LinearLayout>

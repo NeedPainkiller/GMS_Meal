@@ -16,28 +16,31 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by kam6376 on 2015-06-15.
  */
-public class GetRatePHP extends AsyncTask<String, Void, String> {
+public class GetRatePHP extends AsyncTask<Void, Void, String> {
 
-    String params;
+
     private String[] rate = new String[3];
 
-    Calendar calendar;
+    Date today;
+    String todayNum;
+    boolean isToday = false;
 
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+
     }
 
     @Override
-    protected String doInBackground(String... params) {
+    protected String doInBackground(Void... params) {
 
-        this.params = params[0];
+
         HttpClient httpClient = new DefaultHttpClient();
         HttpGet httpGet = new HttpGet("http://ppcj2.iptime.org/~kang/getRate.php");
 
@@ -46,7 +49,7 @@ public class GetRatePHP extends AsyncTask<String, Void, String> {
             HttpEntity httpEntity = httpResponse.getEntity();
 
             if (httpEntity != null) {
-                Log.e("getRate", "Err");
+//                Log.w("reponse", EntityUtils.toString(httpEntity));
             }
             String result = EntityUtils.toString(httpEntity);
             return result;
@@ -63,12 +66,11 @@ public class GetRatePHP extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String resource) {
 //        super.onPostExecute(resource);
-        String rate = "";
-        String num = "";
-        String date = "";
+        String rate;
+        String num;
+        String date;
 
         Message message = RateViewFragment.getRateHandler.obtainMessage();
-        Bundle data = new Bundle();
 
         try {
             if (resource == null) {
@@ -89,17 +91,25 @@ public class GetRatePHP extends AsyncTask<String, Void, String> {
                 this.rate[1] = num;
                 this.rate[2] = date;
 
+                if(!(todayNum==this.rate[2])&&isToday==false){
+                    isToday=true;
+
+                    RateViewFragment.getRateHandler.sendEmptyMessage(0);
+
+                }
+                Bundle data = new Bundle();
+
                 data.putStringArray("rate", this.rate);
                 message.setData(data);
                 RateViewFragment.getRateHandler.sendMessage(message);
 
             }
-            Log.e("postJSON", rate+"/"+num+"/"+date);
+//            Log.e("postJSON", rate+"/"+num+"/"+date);
         } catch (Exception e) {
             Log.e("postErr", "JSON is fucked");
+            Log.e("postErr", e.getMessage());
+
         }
-
-
 
 
     }

@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +34,7 @@ public class RateViewFragment extends Fragment {
 
     public static Handler getRateHandler;
 
-    GetRatePHP getRatePHP;
+
 
     public RateViewFragment(Context context) {
         this.context = context;
@@ -66,14 +67,24 @@ public class RateViewFragment extends Fragment {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
+                if(msg.what == 0){
+                    rateItemDataArrayList.add(new RateItemData("0","0Έν","today"));
 
-                String[] rate = msg.getData().getStringArray("rate");
+                    mAdapter.notifyDataSetChanged();
+                }else{
+                    String[] rate = msg.getData().getStringArray("rate");
+                    Log.e("raetHandler", rate[0] + "/" + rate[1] + "/" + rate[2]);
 
-                rateItemDataArrayList.add(new RateItemData(rate[0], rate[1], rate[2]));
+                    rateItemDataArrayList.add(new RateItemData(rate[0], rate[1], rate[2]));
 
-                mAdapter.notifyDataSetChanged();
+                    mAdapter.notifyDataSetChanged();
+                }
+
+
 
             }
         };
+
+        new GetRatePHP().execute();
     }
 }
