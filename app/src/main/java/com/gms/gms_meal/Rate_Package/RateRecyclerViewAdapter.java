@@ -113,7 +113,7 @@ public class RateRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
                 SmallCardRate smallCardRate = (SmallCardRate) holder;
                 smallCardRate.smallRatingBar.setRating(Float.parseFloat(rateItemDataArrayList.get(position).getRate()));
                 smallCardRate.smallRate.setText(rateItemDataArrayList.get(position).getRate());
-                smallCardRate.smallNum.setText(rateItemDataArrayList.get(position).getNum()+"Έν");
+                smallCardRate.smallNum.setText(rateItemDataArrayList.get(position).getNum());
                 smallCardRate.smallDate.setText(rateItemDataArrayList.get(position).getDate());
                 break;
         }

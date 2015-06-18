@@ -70,7 +70,7 @@ public class GetRatePHP extends AsyncTask<Void, Void, String> {
         String num;
         String date;
 
-        Message message = RateViewFragment.getRateHandler.obtainMessage();
+
 
         try {
             if (resource == null) {
@@ -88,15 +88,26 @@ public class GetRatePHP extends AsyncTask<Void, Void, String> {
                 date = jsonObject.getString("date");
 
                 this.rate[0] = rate;
-                this.rate[1] = num;
+                this.rate[1] = num+" 명";
                 this.rate[2] = date;
+
+
+                Message message = RateViewFragment.getRateHandler.obtainMessage();
 
                 if(!(todayNum==this.rate[2])&&isToday==false){
                     isToday=true;
-
-                    RateViewFragment.getRateHandler.sendEmptyMessage(0);
+                    Bundle todayData = new Bundle();
+                    String[] addToday = new String[3];
+                    addToday[0] = "0.0";
+                    addToday[1] = "첫 평점을 남기세요";
+                    addToday[2] = todayNum;
+                    Message todayMessage = RateViewFragment.getRateHandler.obtainMessage();
+                    todayData.putStringArray("rate", addToday);
+                    todayMessage.setData(todayData);
+                    RateViewFragment.getRateHandler.sendMessage(todayMessage);
 
                 }
+
                 Bundle data = new Bundle();
 
                 data.putStringArray("rate", this.rate);

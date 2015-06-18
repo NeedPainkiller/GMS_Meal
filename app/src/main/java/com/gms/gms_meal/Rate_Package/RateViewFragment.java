@@ -67,18 +67,18 @@ public class RateViewFragment extends Fragment {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
-                if(msg.what == 0){
-                    rateItemDataArrayList.add(new RateItemData("0","0Έν","today"));
-
-                    mAdapter.notifyDataSetChanged();
-                }else{
+//                if(msg.what == 0){
+//                    rateItemDataArrayList.add(new RateItemData("0","0Έν","today"));
+//
+//                    mAdapter.notifyDataSetChanged();
+//                }else{
                     String[] rate = msg.getData().getStringArray("rate");
                     Log.e("raetHandler", rate[0] + "/" + rate[1] + "/" + rate[2]);
 
                     rateItemDataArrayList.add(new RateItemData(rate[0], rate[1], rate[2]));
 
                     mAdapter.notifyDataSetChanged();
-                }
+//                }
 
 
 
