@@ -1,14 +1,15 @@
 package com.gms.gms_meal.Rate_Package;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.andexert.library.RippleView;
 import com.gms.gms_meal.R;
-import com.gms.gms_meal.lib.ColoredRatingBar;
 import com.gms.gms_meal.lib.FontAwesomeText;
 
 import java.util.ArrayList;
@@ -20,31 +21,35 @@ public class RateRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     ArrayList<RateItemData> rateItemDataArrayList;
 
-    AdapterView.OnItemClickListener listener;
+
 
     static final int TYPE_HEADER = 0;
     static final int TYPE_CELL = 1;
 
+    Context context;
+
     public static class BigCardRate extends RecyclerView.ViewHolder {
-        public ColoredRatingBar bigRatingBar;
+        public FontAwesomeText bigFontRate;
         public TextView bigRate;
         public FontAwesomeText bigFontNum;
         public TextView bigNum;
         public TextView bigDate;
+        public RippleView bigRipple;
 
         public BigCardRate(View itemView) {
             super(itemView);
 
-            bigRatingBar = (ColoredRatingBar) itemView.findViewById(R.id.bigRatingBar);
+            bigFontRate = (FontAwesomeText) itemView.findViewById(R.id.bigFontRate);
             bigRate = (TextView) itemView.findViewById(R.id.bigRate);
             bigFontNum = (FontAwesomeText) itemView.findViewById(R.id.bigFontNum);
             bigNum = (TextView) itemView.findViewById(R.id.bigNum);
             bigDate = (TextView) itemView.findViewById(R.id.bigDate);
+            bigRipple = (RippleView)itemView.findViewById(R.id.bigRipple);
         }
     }
 
     public static class SmallCardRate extends RecyclerView.ViewHolder {
-        public ColoredRatingBar smallRatingBar;
+        public FontAwesomeText smallFontRate;
         public TextView smallRate;
         public FontAwesomeText smallFontNum;
         public TextView smallNum;
@@ -53,7 +58,7 @@ public class RateRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
         public SmallCardRate(View itemView) {
             super(itemView);
 
-            smallRatingBar = (ColoredRatingBar) itemView.findViewById(R.id.smallRatingBar);
+            smallFontRate = (FontAwesomeText) itemView.findViewById(R.id.smallFontRate);
             smallRate = (TextView) itemView.findViewById(R.id.smallRate);
             smallFontNum = (FontAwesomeText) itemView.findViewById(R.id.smallFontNum);
             smallNum = (TextView) itemView.findViewById(R.id.smallNum);
@@ -61,8 +66,10 @@ public class RateRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
         }
     }
 
-    public RateRecyclerViewAdapter(ArrayList<RateItemData> rateItemDataArrayList) {
+    public RateRecyclerViewAdapter(ArrayList<RateItemData> rateItemDataArrayList, Context context) {
         this.rateItemDataArrayList = rateItemDataArrayList;
+        this.context = context;
+
     }
 
     @Override
@@ -102,16 +109,26 @@ public class RateRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
         switch (getItemViewType(position)) {
             case TYPE_HEADER:
                 BigCardRate bigCardRate = (BigCardRate) holder;
-                bigCardRate.bigRatingBar.setRating(Float.parseFloat(rateItemDataArrayList.get(position).getRate()));
+                bigCardRate.bigFontRate.startFlashing(context, true, FontAwesomeText.AnimationSpeed.MEDIUM);
 
                 bigCardRate.bigRate.setText(rateItemDataArrayList.get(position).getRate());
-                bigCardRate.bigNum.setText(rateItemDataArrayList.get(position).getNum()+"Έν");
+                bigCardRate.bigNum.setText(rateItemDataArrayList.get(position).getNum());
                 bigCardRate.bigDate.setText(rateItemDataArrayList.get(position).getDate());
+
+                bigCardRate.bigRipple.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
+                    @Override
+                    public void onComplete(RippleView rippleView) {
+                        Toast.makeText(context,"bigRipple",Toast.LENGTH_SHORT).show();
+
+                        RateDialog rateDialog = new RateDialog(context);
+                        rateDialog.show();
+                    }
+                });
                 break;
             case TYPE_CELL:
 
                 SmallCardRate smallCardRate = (SmallCardRate) holder;
-                smallCardRate.smallRatingBar.setRating(Float.parseFloat(rateItemDataArrayList.get(position).getRate()));
+                smallCardRate.smallFontRate.startFlashing(context, true, FontAwesomeText.AnimationSpeed.MEDIUM);
                 smallCardRate.smallRate.setText(rateItemDataArrayList.get(position).getRate());
                 smallCardRate.smallNum.setText(rateItemDataArrayList.get(position).getNum());
                 smallCardRate.smallDate.setText(rateItemDataArrayList.get(position).getDate());

@@ -195,7 +195,8 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 //                    case 2:
 //                        return ScrollFragment.newInstance();
                     default:
-                        RateViewFragment rateViewFragment = new RateViewFragment(getApplicationContext()).getFrag();
+//                        RateViewFragment rateViewFragment = new RateViewFragment(getApplicationContext()).getFrag();
+                        RateViewFragment rateViewFragment = new RateViewFragment(MainActivity.this).getFrag();
                         return  rateViewFragment;
                 }
 

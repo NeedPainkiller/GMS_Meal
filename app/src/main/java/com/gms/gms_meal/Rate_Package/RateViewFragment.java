@@ -58,7 +58,7 @@ public class RateViewFragment extends Fragment {
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setHasFixedSize(true);
 
-        mAdapter = new RecyclerViewMaterialAdapter(new RateRecyclerViewAdapter(rateItemDataArrayList));
+        mAdapter = new RecyclerViewMaterialAdapter(new RateRecyclerViewAdapter(rateItemDataArrayList,context));
         mRecyclerView.setAdapter(mAdapter);
 
         MaterialViewPagerHelper.registerRecyclerView(getActivity(), mRecyclerView, null);

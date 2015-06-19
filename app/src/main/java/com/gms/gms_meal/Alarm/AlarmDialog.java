@@ -44,7 +44,7 @@ public class AlarmDialog extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.d_download);
+        setContentView(R.layout.d_alarm);
 
         dialogInfo = (TextView) findViewById(R.id.dialog_info);
         dialogDate = (TextView) findViewById(R.id.dialog_date);
