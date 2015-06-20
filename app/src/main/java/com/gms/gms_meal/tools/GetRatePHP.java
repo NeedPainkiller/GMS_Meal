@@ -68,7 +68,7 @@ public class GetRatePHP extends AsyncTask<Void, Void, String> {
     protected void onPostExecute(String resource) {
 //        super.onPostExecute(resource);
         String rate;
-        String num;
+//        String num;
         String date;
 
 
@@ -84,11 +84,11 @@ public class GetRatePHP extends AsyncTask<Void, Void, String> {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 rate = jsonObject.getString("rate");
-                num = jsonObject.getString("num");
+//                num = jsonObject.getString("num");
                 date = jsonObject.getString("date");
 
                 this.rate[0] = rate;
-                this.rate[1] = num + " Έν";
+//                this.rate[1] = num + " Έν";
                 this.rate[2] = date;
 
                 dateFilter(this.rate);
