@@ -121,6 +121,7 @@ public class RateDialog extends Dialog implements RippleView.OnRippleCompleteLis
       } catch (Exception e) {
         Log.e("Rate", "is fucked : " + e.getMessage());
       }finally {
+        dismiss();
         httpPost.abort();
         return null;
       }
