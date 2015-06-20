@@ -25,66 +25,64 @@ import java.util.ArrayList;
  */
 public class RateViewFragment extends Fragment {
 
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
+  private RecyclerView mRecyclerView;
+  private RecyclerView.Adapter mAdapter;
 
-    ArrayList<RateItemData> rateItemDataArrayList = new ArrayList<RateItemData>();
+  ArrayList<RateItemData> rateItemDataArrayList = new ArrayList<RateItemData>();
 
-    Context context;
+  Context context;
 
-    public static Handler getRateHandler;
-
-
-
-    public RateViewFragment(Context context) {
-        this.context = context;
-    }
-
-    public RateViewFragment getFrag() {
-        return this;
-    }
+  public static Handler getRateHandler;
 
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_recyclerview, container, false);
-    }
+  public RateViewFragment(Context context) {
+    this.context = context;
+  }
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.setHasFixedSize(true);
+  public RateViewFragment getFrag() {
+    return this;
+  }
 
-        mAdapter = new RecyclerViewMaterialAdapter(new RateRecyclerViewAdapter(rateItemDataArrayList,context));
-        mRecyclerView.setAdapter(mAdapter);
 
-        MaterialViewPagerHelper.registerRecyclerView(getActivity(), mRecyclerView, null);
+  @Override
+  public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    return inflater.inflate(R.layout.fragment_recyclerview, container, false);
+  }
 
-        getRateHandler = new Handler() {
-            @Override
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
+  @Override
+  public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+    mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+    mRecyclerView.setLayoutManager(layoutManager);
+    mRecyclerView.setHasFixedSize(true);
+
+    mAdapter = new RecyclerViewMaterialAdapter(new RateRecyclerViewAdapter(rateItemDataArrayList, context));
+    mRecyclerView.setAdapter(mAdapter);
+
+    MaterialViewPagerHelper.registerRecyclerView(getActivity(), mRecyclerView, null);
+
+    getRateHandler = new Handler() {
+      @Override
+      public void handleMessage(Message msg) {
+        super.handleMessage(msg);
 //                if(msg.what == 0){
 //                    rateItemDataArrayList.add(new RateItemData("0","0Έν","today"));
 //
 //                    mAdapter.notifyDataSetChanged();
 //                }else{
-                    String[] rate = msg.getData().getStringArray("rate");
-                    Log.e("raetHandler", rate[0] + "/" + rate[1] + "/" + rate[2]);
+        String[] rate = msg.getData().getStringArray("rate");
+        Log.e("raetHandler", rate[0] + "/" + rate[1] + "/" + rate[2]);
 
-                    rateItemDataArrayList.add(new RateItemData(rate[0], rate[1], rate[2]));
+        rateItemDataArrayList.add(new RateItemData(rate[0], rate[1], rate[2]));
 
-                    mAdapter.notifyDataSetChanged();
+        mAdapter.notifyDataSetChanged();
 //                }
 
 
+      }
+    };
 
-            }
-        };
-
-        new GetRatePHP().execute();
-    }
+    new GetRatePHP().execute();
+  }
 }

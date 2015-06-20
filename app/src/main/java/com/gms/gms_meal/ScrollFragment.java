@@ -15,22 +15,22 @@ import com.github.ksoichiro.android.observablescrollview.ObservableScrollView;
  */
 public class ScrollFragment extends Fragment {
 
-    private ObservableScrollView mScrollView;
+  private ObservableScrollView mScrollView;
 
-    public static ScrollFragment newInstance() {
-        return new ScrollFragment();
-    }
+  public static ScrollFragment newInstance() {
+    return new ScrollFragment();
+  }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_scroll, container, false);
-    }
+  @Override
+  public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    return inflater.inflate(R.layout.fragment_scroll, container, false);
+  }
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        mScrollView = (ObservableScrollView) view.findViewById(R.id.scrollView);
+  @Override
+  public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+    mScrollView = (ObservableScrollView) view.findViewById(R.id.scrollView);
 
-        MaterialViewPagerHelper.registerScrollView(getActivity(), mScrollView, null);
-    }
+    MaterialViewPagerHelper.registerScrollView(getActivity(), mScrollView, null);
+  }
 }

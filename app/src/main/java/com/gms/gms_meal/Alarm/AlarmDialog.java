@@ -21,84 +21,84 @@ import java.util.Date;
 public class AlarmDialog extends Dialog {
 
 
-    TextView dialogInfo;
-    TextView dialogDate;
-    TextView dialogDay;
+  TextView dialogInfo;
+  TextView dialogDate;
+  TextView dialogDay;
 
 
-    DataBaseAdmin dataBaseAdmin;
-    Cursor cursor;
+  DataBaseAdmin dataBaseAdmin;
+  Cursor cursor;
 
-    Context context;
-    String index;
-    boolean find = false;
-    boolean time = false;
+  Context context;
+  String index;
+  boolean find = false;
+  boolean time = false;
 
-    public AlarmDialog(Context context, boolean time) {
-        super(context);
-        this.context = context;
-        this.time = time;
-    }
+  public AlarmDialog(Context context, boolean time) {
+    super(context);
+    this.context = context;
+    this.time = time;
+  }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.d_alarm);
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    requestWindowFeature(Window.FEATURE_NO_TITLE);
+    setContentView(R.layout.d_alarm);
 
-        dialogInfo = (TextView) findViewById(R.id.dialog_info);
-        dialogDate = (TextView) findViewById(R.id.dialog_date);
-        dialogDay = (TextView) findViewById(R.id.dialog_day);
+    dialogInfo = (TextView) findViewById(R.id.dialog_info);
+    dialogDate = (TextView) findViewById(R.id.dialog_date);
+    dialogDay = (TextView) findViewById(R.id.dialog_day);
 
-        Date now = new Date();
+    Date now = new Date();
 
-        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
-        now.setDate(now.getDate());
+    SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+    now.setDate(now.getDate());
 
-        index = format.format(now);
-        dataBaseAdmin = new DataBaseAdmin(context);
-        dataBaseAdmin.open();
-        cursor = dataBaseAdmin.select();
+    index = format.format(now);
+    dataBaseAdmin = new DataBaseAdmin(context);
+    dataBaseAdmin.open();
+    cursor = dataBaseAdmin.select();
 
-        cursor.moveToFirst();
+    cursor.moveToFirst();
 
-        getData();
-    }
+    getData();
+  }
 
-    @Override
-    public void onDetachedFromWindow() {
-        super.onDetachedFromWindow();
-        dataBaseAdmin.close();
-        cursor.close();
+  @Override
+  public void onDetachedFromWindow() {
+    super.onDetachedFromWindow();
+    dataBaseAdmin.close();
+    cursor.close();
 
-    }
+  }
 
-    void getData() {
-        if (index.equals(cursor.getString(cursor.getColumnIndex("date"))) || find == true) {
-            String date = cursor.getString(cursor.getColumnIndex("date"));
-            String day = cursor.getString(cursor.getColumnIndex("day"));
-            String lunch = cursor.getString(cursor.getColumnIndex("lunch"));
-            String dinner = cursor.getString(cursor.getColumnIndex("dinner"));
-            find = true;
+  void getData() {
+    if (index.equals(cursor.getString(cursor.getColumnIndex("date"))) || find == true) {
+      String date = cursor.getString(cursor.getColumnIndex("date"));
+      String day = cursor.getString(cursor.getColumnIndex("day"));
+      String lunch = cursor.getString(cursor.getColumnIndex("lunch"));
+      String dinner = cursor.getString(cursor.getColumnIndex("dinner"));
+      find = true;
 
-            if(time == true){
-                dialogInfo.setText(lunch);
-            }else{
-                dialogInfo.setText(dinner);
-            }
+      if (time == true) {
+        dialogInfo.setText(lunch);
+      } else {
+        dialogInfo.setText(dinner);
+      }
 
-            dialogDate.setText(date);
-            dialogDay.setText(day);
+      dialogDate.setText(date);
+      dialogDay.setText(day);
 
-            return;
+      return;
 //                        Toast.makeText(context, date + day + lunch + dinner, Toast.LENGTH_LONG).show();
-        } else {
-            dataBaseAdmin.deleteRaw(cursor.getString(cursor.getColumnIndex("date")));
+    } else {
+      dataBaseAdmin.deleteRaw(cursor.getString(cursor.getColumnIndex("date")));
 //                    Toast.makeText(context, "index fucked", Toast.LENGTH_SHORT).show();
-            cursor.moveToNext();
-            getData();
+      cursor.moveToNext();
+      getData();
 
-        }
     }
+  }
 
 }

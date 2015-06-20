@@ -30,126 +30,126 @@ import java.util.Date;
  */
 public class DinnerViewFragment extends Fragment {
 
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
+  private RecyclerView mRecyclerView;
+  private RecyclerView.Adapter mAdapter;
 
-    ArrayList<MealItemData> mealItemDataArrayList = new ArrayList<MealItemData>();
-    int pos;
-    Context context;
-    public static Handler getMealHandler;
+  ArrayList<MealItemData> mealItemDataArrayList = new ArrayList<MealItemData>();
+  int pos;
+  Context context;
+  public static Handler getMealHandler;
 
-    GetMeal getMeal;
+  GetMeal getMeal;
 
-    DataBaseAdmin dataBaseAdmin;
+  DataBaseAdmin dataBaseAdmin;
 
-    Cursor cursor;
+  Cursor cursor;
 
-    //    RecyclerViewFragment newInstance(int position) {
+  //    RecyclerViewFragment newInstance(int position) {
 //        pos = position;
 //
 //        return new RecyclerViewFragment();
 //    }
-    public DinnerViewFragment(int position, Context context) {
-        pos = position;
-        this.context = context;
-    }
+  public DinnerViewFragment(int position, Context context) {
+    pos = position;
+    this.context = context;
+  }
 
-    public DinnerViewFragment getFrag() {
-        return this;
-    }
+  public DinnerViewFragment getFrag() {
+    return this;
+  }
 
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_recyclerview, container, false);
-    }
+  @Override
+  public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    return inflater.inflate(R.layout.fragment_recyclerview, container, false);
+  }
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+  @Override
+  public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+    mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
 //        mRecyclerView.setItemAnimator(new SlideInLeftAnimator());
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.setHasFixedSize(true);
-        mAdapter = new RecyclerViewMaterialAdapter(new MealRecyclerViewAdapter(mealItemDataArrayList));
+    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+    mRecyclerView.setLayoutManager(layoutManager);
+    mRecyclerView.setHasFixedSize(true);
+    mAdapter = new RecyclerViewMaterialAdapter(new MealRecyclerViewAdapter(mealItemDataArrayList));
 //        mRecyclerView.setAdapter(new SlideInLeftAnimationAdapter(mAdapter));
-        mRecyclerView.setAdapter(mAdapter);
+    mRecyclerView.setAdapter(mAdapter);
 
-        dataBaseAdmin = new DataBaseAdmin(context);
-        dataBaseAdmin.open();
-        cursor = dataBaseAdmin.select();
-        init();
+    dataBaseAdmin = new DataBaseAdmin(context);
+    dataBaseAdmin.open();
+    cursor = dataBaseAdmin.select();
+    init();
 //        context = getActivity();
 
 
-        MaterialViewPagerHelper.registerRecyclerView(getActivity(), mRecyclerView, null);
+    MaterialViewPagerHelper.registerRecyclerView(getActivity(), mRecyclerView, null);
 
-        getMealHandler = new Handler() {
-            @Override
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
+    getMealHandler = new Handler() {
+      @Override
+      public void handleMessage(Message msg) {
+        super.handleMessage(msg);
 
 
-                String[] info = msg.getData().getStringArray("info");
+        String[] info = msg.getData().getStringArray("info");
 
-                mealItemDataArrayList.add(new MealItemData(info[0], info[1], info[3]));
+        mealItemDataArrayList.add(new MealItemData(info[0], info[1], info[3]));
 
-                mAdapter.notifyDataSetChanged();
-                dataBaseAdmin.insertData(info[0], info[1], info[2], info[3]);
+        mAdapter.notifyDataSetChanged();
+        dataBaseAdmin.insertData(info[0], info[1], info[2], info[3]);
 
-            }
-        };
+      }
+    };
 
-    }
+  }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        dataBaseAdmin.close();
-        cursor.close();
-    }
+  @Override
+  public void onDestroyView() {
+    super.onDestroyView();
+    dataBaseAdmin.close();
+    cursor.close();
+  }
 
-    void init() {
+  void init() {
 
 
 //        try {
-        if (cursor.getCount() == 0 || CreateDB.CreateDataBase.reset == true) {
-            dataBaseAdmin.deleteAll();
-            Toast.makeText(context, "DinnerDB" + cursor.getCount(), Toast.LENGTH_SHORT).show();
+    if (cursor.getCount() == 0 || CreateDB.CreateDataBase.reset == true) {
+      dataBaseAdmin.deleteAll();
+      Toast.makeText(context, "DinnerDB" + cursor.getCount(), Toast.LENGTH_SHORT).show();
 //                throw new Exception();
-        }
+    }
 
-        Toast.makeText(context, "DinnerDB" + cursor.getCount(), Toast.LENGTH_SHORT).show();
-        Date now = new Date();
+    Toast.makeText(context, "DinnerDB" + cursor.getCount(), Toast.LENGTH_SHORT).show();
+    Date now = new Date();
 
-        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
-        now.setDate(now.getDate());
+    SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+    now.setDate(now.getDate());
 
-        String index = format.format(now);
+    String index = format.format(now);
 
 
-        boolean find = false;
+    boolean find = false;
 
-        while (cursor.moveToNext()) {
+    while (cursor.moveToNext()) {
 
-            if (index.equals(cursor.getString(cursor.getColumnIndex("date"))) || find == true) {
-                String date = cursor.getString(cursor.getColumnIndex("date"));
-                String day = cursor.getString(cursor.getColumnIndex("day"));
-                String lunch = cursor.getString(cursor.getColumnIndex("lunch"));
-                String dinner = cursor.getString(cursor.getColumnIndex("dinner"));
-                find = true;
-                mealItemDataArrayList.add(new MealItemData(date, day, dinner));
+      if (index.equals(cursor.getString(cursor.getColumnIndex("date"))) || find == true) {
+        String date = cursor.getString(cursor.getColumnIndex("date"));
+        String day = cursor.getString(cursor.getColumnIndex("day"));
+        String lunch = cursor.getString(cursor.getColumnIndex("lunch"));
+        String dinner = cursor.getString(cursor.getColumnIndex("dinner"));
+        find = true;
+        mealItemDataArrayList.add(new MealItemData(date, day, dinner));
 
-                mAdapter.notifyDataSetChanged();
+        mAdapter.notifyDataSetChanged();
 //                        Toast.makeText(context, date + day + lunch + dinner, Toast.LENGTH_LONG).show();
-            } else {
-                dataBaseAdmin.deleteRaw(cursor.getString(cursor.getColumnIndex("date")));
+      } else {
+        dataBaseAdmin.deleteRaw(cursor.getString(cursor.getColumnIndex("date")));
 //                    Toast.makeText(context, "index fucked", Toast.LENGTH_SHORT).show();
-            }
+      }
 
 
-        }
+    }
 
 
 //        } catch (Exception e) {
@@ -178,11 +178,11 @@ public class DinnerViewFragment extends Fragment {
 //            }
 //        }finally {
 
-        CreateDB.CreateDataBase.reset = false;
+    CreateDB.CreateDataBase.reset = false;
 //        }
 //        cursor.moveToFirst();
 
-    }
+  }
 
 
 }

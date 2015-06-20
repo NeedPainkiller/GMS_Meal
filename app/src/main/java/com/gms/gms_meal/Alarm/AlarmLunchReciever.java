@@ -9,10 +9,10 @@ import com.gms.gms_meal.MainActivity;
 /**
  * Created by kam6376 on 2015-06-12.
  */
-public class AlarmLunchReciever extends BroadcastReceiver{
-    @Override
-    public void onReceive(Context context, Intent intent) {
-        AlarmDialog alarmDialog = new AlarmDialog(MainActivity.context,true);
-        alarmDialog.show();
-    }
+public class AlarmLunchReciever extends BroadcastReceiver {
+  @Override
+  public void onReceive(Context context, Intent intent) {
+    AlarmDialog alarmDialog = new AlarmDialog(MainActivity.context, true);
+    alarmDialog.show();
+  }
 }

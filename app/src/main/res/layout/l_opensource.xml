@@ -1,333 +1,333 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@null"
-    android:orientation="vertical">
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:orientation="vertical">
 
-    <LinearLayout
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@null"
+      android:orientation="vertical">
+
+    <com.andexert.library.RippleView
+
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
         android:background="@null"
-        android:orientation="vertical">
+        app:rv_zoom="true">
 
-        <com.andexert.library.RippleView
+      <android.support.v7.widget.CardView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          app:cardBackgroundColor="#ff8c00"
+          app:cardCornerRadius="5dp"
+          app:cardElevation="7dp"
+          app:cardPreventCornerOverlap="false"
+          app:contentPadding="0dp">
 
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:background="@null"
-            app:rv_zoom="true">
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:cardBackgroundColor="#ff8c00"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="7dp"
-                app:cardPreventCornerOverlap="false"
-                app:contentPadding="0dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-
-                    android:background="@null">
-
-                    <com.gms.gms_meal.lib.FontAwesomeText
-                        android:id="@+id/nav_FontOpensource"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:layout_margin="10dp"
-
-                        android:textSize="100sp"
-                        app:fa_icon="fa-code"></com.gms.gms_meal.lib.FontAwesomeText>
-
-
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
-        </com.andexert.library.RippleView>
-
-        <com.andexert.library.RippleView
-            android:id="@+id/MaterialViewPager_license"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:background="@null"
-            app:rv_zoom="true">
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:cardBackgroundColor="#00ff00"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="7dp"
-                app:cardPreventCornerOverlap="false"
-                app:contentPadding="0dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-
-                    android:background="@null">
-
-                    <TextView
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_below="@+id/textView01"
-                        android:layout_margin="10dp"
-                        android:text="@string/MaterialViewPager" />
-
-
-                    <TextView
-                        android:id="@+id/textView01"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_margin="10dp"
-                        android:gravity="center_horizontal"
-                        android:text="MaterialViewPager - Apache License\n Developed by florent37" />
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
-
-        </com.andexert.library.RippleView>
-
-        <com.andexert.library.RippleView
-            android:id="@+id/RippleEffect_license"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:layout_margin="10dp"
-            android:background="@null"
-            app:rv_zoom="true">
+            android:background="@null">
 
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:cardBackgroundColor="#1e90ff"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="7dp"
-                app:cardPreventCornerOverlap="false"
-                app:contentPadding="0dp">
+          <com.gms.gms_meal.lib.FontAwesomeText
+              android:id="@+id/nav_FontOpensource"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_centerHorizontal="true"
+              android:layout_centerVertical="true"
+              android:layout_margin="10dp"
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+              android:textSize="100sp"
+              app:fa_icon="fa-code"></com.gms.gms_meal.lib.FontAwesomeText>
 
-                    android:background="@null">
 
-                    <TextView
-                        android:id="@+id/TextView02"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_margin="10dp"
-                        android:gravity="center_horizontal"
-                        android:text="RippleEffect - MIT License\n Developed by Robin Chutaux" />
+        </RelativeLayout>
+      </android.support.v7.widget.CardView>
+    </com.andexert.library.RippleView>
 
-                    <TextView
+    <com.andexert.library.RippleView
+        android:id="@+id/MaterialViewPager_license"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:background="@null"
+        app:rv_zoom="true">
 
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_below="@+id/TextView02"
-                        android:layout_margin="10dp"
-                        android:text="@string/RippleEffect" />
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
-        </com.andexert.library.RippleView>
+      <android.support.v7.widget.CardView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          app:cardBackgroundColor="#00ff00"
+          app:cardCornerRadius="5dp"
+          app:cardElevation="7dp"
+          app:cardPreventCornerOverlap="false"
+          app:contentPadding="0dp">
 
-        <com.andexert.library.RippleView
-            android:id="@+id/FloatingActionButton_license"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:layout_margin="10dp"
-            android:background="@null"
-            app:rv_zoom="true">
+            android:background="@null">
 
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:cardBackgroundColor="#dc143c"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="7dp"
-                app:cardPreventCornerOverlap="false"
-                app:contentPadding="0dp">
+          <TextView
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentLeft="true"
+              android:layout_alignParentRight="true"
+              android:layout_below="@+id/textView01"
+              android:layout_margin="10dp"
+              android:text="@string/MaterialViewPager"/>
 
-                    android:background="@null">
 
-                    <TextView
-                        android:id="@+id/TextView03"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_margin="10dp"
-                        android:gravity="center_horizontal"
-                        android:text="FloatingActionButton - Apache License\n Developed by Dmytro Tarianyk" />
+          <TextView
+              android:id="@+id/textView01"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentTop="true"
+              android:layout_centerHorizontal="true"
+              android:layout_margin="10dp"
+              android:gravity="center_horizontal"
+              android:text="MaterialViewPager - Apache License\n Developed by florent37"/>
+        </RelativeLayout>
+      </android.support.v7.widget.CardView>
 
-                    <TextView
+    </com.andexert.library.RippleView>
 
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_below="@+id/TextView03"
-                        android:layout_margin="10dp"
-                        android:text="@string/FloatingActionButton" />
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
-        </com.andexert.library.RippleView>
+    <com.andexert.library.RippleView
+        android:id="@+id/RippleEffect_license"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
 
-        <com.andexert.library.RippleView
-            android:id="@+id/ParallaxPagerTransformer_license"
+        android:layout_margin="10dp"
+        android:background="@null"
+        app:rv_zoom="true">
+
+      <android.support.v7.widget.CardView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          app:cardBackgroundColor="#1e90ff"
+          app:cardCornerRadius="5dp"
+          app:cardElevation="7dp"
+          app:cardPreventCornerOverlap="false"
+          app:contentPadding="0dp">
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:layout_margin="10dp"
-            android:background="@null"
-            app:rv_zoom="true">
+            android:background="@null">
 
-            <android.support.v7.widget.CardView
+          <TextView
+              android:id="@+id/TextView02"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentTop="true"
+              android:layout_centerHorizontal="true"
+              android:layout_margin="10dp"
+              android:gravity="center_horizontal"
+              android:text="RippleEffect - MIT License\n Developed by Robin Chutaux"/>
 
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:cardBackgroundColor="#ff8c00"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="7dp"
-                app:cardPreventCornerOverlap="false"
-                app:contentPadding="0dp">
+          <TextView
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentLeft="true"
+              android:layout_alignParentRight="true"
+              android:layout_below="@+id/TextView02"
+              android:layout_margin="10dp"
+              android:text="@string/RippleEffect"/>
+        </RelativeLayout>
+      </android.support.v7.widget.CardView>
+    </com.andexert.library.RippleView>
 
-                    android:background="@null">
+    <com.andexert.library.RippleView
+        android:id="@+id/FloatingActionButton_license"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
 
-                    <TextView
+        android:layout_margin="10dp"
+        android:background="@null"
+        app:rv_zoom="true">
 
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_margin="10dp"
-                        android:gravity="center_horizontal"
-                        android:text="ParallaxPagerTransformer\nDeveloped by florent37" />
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
+      <android.support.v7.widget.CardView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          app:cardBackgroundColor="#dc143c"
+          app:cardCornerRadius="5dp"
+          app:cardElevation="7dp"
+          app:cardPreventCornerOverlap="false"
+          app:contentPadding="0dp">
 
-
-        </com.andexert.library.RippleView>
-
-        <com.andexert.library.RippleView
-            android:id="@+id/shimmer_license"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:layout_margin="10dp"
-            android:background="@null"
-            app:rv_zoom="true">
+            android:background="@null">
 
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:cardBackgroundColor="#a9a9a9"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="7dp"
-                app:cardPreventCornerOverlap="false"
-                app:contentPadding="0dp">
+          <TextView
+              android:id="@+id/TextView03"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentTop="true"
+              android:layout_centerHorizontal="true"
+              android:layout_margin="10dp"
+              android:gravity="center_horizontal"
+              android:text="FloatingActionButton - Apache License\n Developed by Dmytro Tarianyk"/>
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+          <TextView
 
-                    android:background="@null">
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentLeft="true"
+              android:layout_alignParentRight="true"
+              android:layout_below="@+id/TextView03"
+              android:layout_margin="10dp"
+              android:text="@string/FloatingActionButton"/>
+        </RelativeLayout>
+      </android.support.v7.widget.CardView>
+    </com.andexert.library.RippleView>
 
-                    <TextView
-                        android:id="@+id/TextView05"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_margin="10dp"
-                        android:gravity="center_horizontal"
-                        android:text="Shimmer for Android - Apache License\n Developed by Romain Piel" />
+    <com.andexert.library.RippleView
+        android:id="@+id/ParallaxPagerTransformer_license"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
 
-                    <TextView
+        android:layout_margin="10dp"
+        android:background="@null"
+        app:rv_zoom="true">
 
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_below="@+id/TextView05"
-                        android:layout_margin="10dp"
-                        android:text="@string/Shimmer" />
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
-        </com.andexert.library.RippleView>
+      <android.support.v7.widget.CardView
 
-        <com.andexert.library.RippleView
-            android:id="@+id/androidBootstrap_license"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          app:cardBackgroundColor="#ff8c00"
+          app:cardCornerRadius="5dp"
+          app:cardElevation="7dp"
+          app:cardPreventCornerOverlap="false"
+          app:contentPadding="0dp">
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:layout_margin="10dp"
-            android:background="@null"
-            app:rv_zoom="true">
+            android:background="@null">
 
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:cardBackgroundColor="#ffd700"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="7dp"
-                app:cardPreventCornerOverlap="false"
-                app:contentPadding="0dp">
+          <TextView
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-
-                    android:background="@null">
-
-                    <TextView
-                        android:id="@+id/TextView06"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_margin="10dp"
-                        android:gravity="center_horizontal"
-                        android:text="Android-Bootstrap - MIT License\n Developed by Bearded Hen" />
-
-                    <TextView
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_below="@+id/TextView06"
-                        android:layout_margin="10dp"
-                        android:text="@string/AndroidBootstrap" />
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
-        </com.andexert.library.RippleView>
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentTop="true"
+              android:layout_centerHorizontal="true"
+              android:layout_margin="10dp"
+              android:gravity="center_horizontal"
+              android:text="ParallaxPagerTransformer\nDeveloped by florent37"/>
+        </RelativeLayout>
+      </android.support.v7.widget.CardView>
 
 
-    </LinearLayout>
+    </com.andexert.library.RippleView>
+
+    <com.andexert.library.RippleView
+        android:id="@+id/shimmer_license"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:layout_margin="10dp"
+        android:background="@null"
+        app:rv_zoom="true">
+
+      <android.support.v7.widget.CardView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          app:cardBackgroundColor="#a9a9a9"
+          app:cardCornerRadius="5dp"
+          app:cardElevation="7dp"
+          app:cardPreventCornerOverlap="false"
+          app:contentPadding="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:background="@null">
+
+          <TextView
+              android:id="@+id/TextView05"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentTop="true"
+              android:layout_centerHorizontal="true"
+              android:layout_margin="10dp"
+              android:gravity="center_horizontal"
+              android:text="Shimmer for Android - Apache License\n Developed by Romain Piel"/>
+
+          <TextView
+
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentLeft="true"
+              android:layout_alignParentRight="true"
+              android:layout_below="@+id/TextView05"
+              android:layout_margin="10dp"
+              android:text="@string/Shimmer"/>
+        </RelativeLayout>
+      </android.support.v7.widget.CardView>
+    </com.andexert.library.RippleView>
+
+    <com.andexert.library.RippleView
+        android:id="@+id/androidBootstrap_license"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:layout_margin="10dp"
+        android:background="@null"
+        app:rv_zoom="true">
+
+      <android.support.v7.widget.CardView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          app:cardBackgroundColor="#ffd700"
+          app:cardCornerRadius="5dp"
+          app:cardElevation="7dp"
+          app:cardPreventCornerOverlap="false"
+          app:contentPadding="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:background="@null">
+
+          <TextView
+              android:id="@+id/TextView06"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentTop="true"
+              android:layout_centerHorizontal="true"
+              android:layout_margin="10dp"
+              android:gravity="center_horizontal"
+              android:text="Android-Bootstrap - MIT License\n Developed by Bearded Hen"/>
+
+          <TextView
+
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentLeft="true"
+              android:layout_alignParentRight="true"
+              android:layout_below="@+id/TextView06"
+              android:layout_margin="10dp"
+              android:text="@string/AndroidBootstrap"/>
+        </RelativeLayout>
+      </android.support.v7.widget.CardView>
+    </com.andexert.library.RippleView>
+
+
+  </LinearLayout>
 </ScrollView>
