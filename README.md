@@ -19,6 +19,7 @@ GMS 모바일 프로그래밍 수업의 수행평가 결과물이며 3분기 내
 ## Installation
 
 7월 초 Google Play 등록예정 
+http://youtu.be/WeSt1NXLhw4
 
 ## Usage
 
