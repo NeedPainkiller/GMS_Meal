@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2015 Kam6512. All Rights Reserved.
+ * https://github.com/kam6512/GMS_Meal
+ */
+
 package com.gms.gms_meal.Rate_Package;
 
 import android.app.Dialog;
@@ -47,7 +52,7 @@ public class RateDialog extends Dialog implements RippleView.OnRippleCompleteLis
     super.onCreate(savedInstanceState);
     requestWindowFeature(Window.FEATURE_NO_TITLE);
     setContentView(R.layout.d_vote_rate);
-
+    Snackbar.make(v, "평점을 선택하세요", Snackbar.LENGTH_SHORT).show();
     rippleFuck = (RippleView) findViewById(R.id.rateRippleFuck);
     rippleFuck.setOnRippleCompleteListener(this);
     rippleShit = (RippleView) findViewById(R.id.rateRippleShit);
@@ -104,7 +109,7 @@ public class RateDialog extends Dialog implements RippleView.OnRippleCompleteLis
       postRateValues.add(new BasicNameValuePair("rate", rate));
       postRateValues.add(new BasicNameValuePair("date", date));
       HttpClient httpClient = new DefaultHttpClient();
-      HttpPost httpPost = new HttpPost("http://ppcj2.iptime.org/~kang/postRate.php");
+      HttpPost httpPost = new HttpPost("");
 
       HttpParams httpParams = httpClient.getParams();
       httpPost.setParams(httpParams);

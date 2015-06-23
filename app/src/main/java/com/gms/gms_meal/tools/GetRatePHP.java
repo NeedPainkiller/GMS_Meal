@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2015 Kam6512. All Rights Reserved.
+ * https://github.com/kam6512/GMS_Meal
+ */
+
 package com.gms.gms_meal.tools;
 
 import android.os.AsyncTask;
@@ -28,7 +33,7 @@ public class GetRatePHP extends AsyncTask<Void, Void, String> {
   protected String doInBackground(Void... params) {
 
     HttpClient httpClient = new DefaultHttpClient();
-    HttpGet httpGet = new HttpGet("http://ppcj2.iptime.org/~kang/getRate.php");
+    HttpGet httpGet = new HttpGet("");
 
     try {
       HttpResponse httpResponse = httpClient.execute(httpGet);
