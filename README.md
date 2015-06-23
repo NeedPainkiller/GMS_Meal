@@ -10,40 +10,26 @@ GMS 모바일 프로그래밍 수업의 수행평가 결과물이며 3분기 내
 ---
 ![Valid XHTML](http://ppcj2.iptime.org/~kang/image/launcher_shadow.png).
 
----
+------
 
   <content>
 # G밥
-
-TODO: Write a project description
+2015년 경기모바일과학고등학교 3학년 7반 모바일 컨텐츠과 강영원군이 즉석제작한 안드로이드 어플리케이션입니다.
 
 ## Installation
 
-TODO: Describe the installation process
+7월 초 Google Play 등록예정 
 
 ## Usage
 
-TODO: Write usage instructions
-
-## Contributing
-
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
+1.급식 저장기능
+2.평점시스템 도입
+3.데이터절약 가능!
 
 ## History
 
 TODO: Write history
 
-## Credits
-
-TODO: Write credits
-
-## License
-
-TODO: Write license
 </content>
   <tabTrigger>readme</tabTrigger>
 
