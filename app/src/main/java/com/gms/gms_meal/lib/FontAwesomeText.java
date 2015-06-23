@@ -13,28 +13,6 @@ import com.gms.gms_meal.R;
 
 public class FontAwesomeText extends TextView {
 
-  public enum AnimationSpeed {
-    FAST(500, 200),
-    MEDIUM(1000, 500),
-    SLOW(2000, 1000);
-
-    private final long rotateDuration;
-    private final long flashDuration;
-
-    private AnimationSpeed(long rotateDuration, long flashDuration) {
-      this.rotateDuration = rotateDuration;
-      this.flashDuration = flashDuration;
-    }
-
-    public long getRotateDuration() {
-      return rotateDuration;
-    }
-
-    public long getFlashDuration() {
-      return flashDuration;
-    }
-  }
-
   public FontAwesomeText(Context context, AttributeSet attrs, int defStyle) {
     super(context, attrs, defStyle);
     initialise(attrs);
@@ -162,6 +140,28 @@ public class FontAwesomeText extends TextView {
    */
   public void setIcon(String faIcon) {
     this.setText(FontAwesome.getUnicode(faIcon));
+  }
+
+  public enum AnimationSpeed {
+    FAST(500, 200),
+    MEDIUM(1000, 500),
+    SLOW(2000, 1000);
+
+    private final long rotateDuration;
+    private final long flashDuration;
+
+    private AnimationSpeed(long rotateDuration, long flashDuration) {
+      this.rotateDuration = rotateDuration;
+      this.flashDuration = flashDuration;
+    }
+
+    public long getRotateDuration() {
+      return rotateDuration;
+    }
+
+    public long getFlashDuration() {
+      return flashDuration;
+    }
   }
 
 }

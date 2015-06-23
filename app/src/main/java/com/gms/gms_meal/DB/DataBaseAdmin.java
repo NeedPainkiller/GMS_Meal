@@ -17,27 +17,6 @@ public class DataBaseAdmin {
   public DataBaseHelper databaseHelper;
   private Context context;
 
-  private class DataBaseHelper extends SQLiteOpenHelper {
-
-    public DataBaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-      super(context, name, factory, version);
-    }
-
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-      // 최초 DB를 만들때 한번만 호출된다.
-      db.execSQL(CreateDB.CreateDataBase.CREATE_DB);
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-      // 버전이 업데이트 되었을 경우 DB를 다시 만들어 준다.
-      db.execSQL("DROP TABLE IF EXISTS " + CreateDB.CreateDataBase._TABLE_NAME);
-      onCreate(db);
-    }
-  }
-
-
   public DataBaseAdmin(Context context) {
     this.context = context;
   }
@@ -80,11 +59,30 @@ public class DataBaseAdmin {
 
   }
 
-
   public Cursor select() {
 //        sqLiteDatabase = databaseHelper.getReadableDatabase();
     Cursor cursor = sqLiteDatabase.query(CreateDB.CreateDataBase._TABLE_NAME, null, null, null, null, null, null);
     return cursor;
+  }
+
+  private class DataBaseHelper extends SQLiteOpenHelper {
+
+    public DataBaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+      super(context, name, factory, version);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+      // 최초 DB를 만들때 한번만 호출된다.
+      db.execSQL(CreateDB.CreateDataBase.CREATE_DB);
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+      // 버전이 업데이트 되었을 경우 DB를 다시 만들어 준다.
+      db.execSQL("DROP TABLE IF EXISTS " + CreateDB.CreateDataBase._TABLE_NAME);
+      onCreate(db);
+    }
   }
 
 

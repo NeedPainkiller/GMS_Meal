@@ -10,11 +10,13 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.SparseArray;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,11 +29,13 @@ import com.andexert.library.RippleView.OnRippleCompleteListener;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.github.florent37.materialviewpager.MaterialViewPager;
+import com.github.florent37.materialviewpager.MaterialViewPagerHelper;
 import com.gms.gms_meal.Alarm.AlarmManagement;
 import com.gms.gms_meal.DB.CreateDB;
 import com.gms.gms_meal.Dev.DeveloperActivity;
 import com.gms.gms_meal.Meal_Package.DinnerViewFragment;
 import com.gms.gms_meal.Meal_Package.LunchViewFragment;
+import com.gms.gms_meal.Rate_Package.RateDialog;
 import com.gms.gms_meal.Rate_Package.RateViewFragment;
 import com.gms.gms_meal.lib.FontAwesomeText;
 import com.romainpiel.shimmer.Shimmer;
@@ -42,31 +46,25 @@ import java.util.Locale;
 
 public class MainActivity extends ActionBarActivity implements OnClickListener, OnRippleCompleteListener {
 
+  public static Context context;
   private MaterialViewPager materialViewPager;
   private DrawerLayout drawerLayout;
   private LinearLayout nav;
   private ActionBarDrawerToggle actionBarDrawerToggle;
-
   private RippleView developerRoppleView, opensourceRippleView, githubRippleView;
   private FontAwesomeText developerFont, opensourceFont, githubFont;
-
   private Toolbar toolbar;
   private Shimmer shimmer;
   private ShimmerTextView shimmerTextView, developerSim, opensourceSim, githubSim;
-
   private FloatingActionMenu menu;
-
   private FloatingActionButton Main_facebook;
   private FloatingActionButton Main_refresh;
   private FloatingActionButton Main_rate;
   private FloatingActionButton Main_Dinner;
   private FloatingActionButton Main_Lunch;
-
-
   private SharedPreferences sharedPreferences;
   private SharedPreferences.Editor editor;
-
-  public static Context context;
+  private View v;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +73,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 
     context = MainActivity.this;
     setTitle("");
+    v = getWindow().getDecorView().findViewById(android.R.id.content);
 
     developerRoppleView = (RippleView) findViewById(R.id.nav_RippleDeveloper);
     developerRoppleView.setOnRippleCompleteListener(this);
@@ -84,15 +83,12 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
     githubRippleView.setOnRippleCompleteListener(this);
 
     developerFont = (FontAwesomeText) findViewById(R.id.nav_FontDeveloper);
-//        developerFont.startFlashing(this, true, FontAwesomeText.AnimationSpeed.SLOW);
-    opensourceFont = (FontAwesomeText) findViewById(R.id.nav_FontOpensource);
-//        opensourceFont.startFlashing(this, true, FontAwesomeText.AnimationSpeed.MEDIUM);
-    githubFont = (FontAwesomeText) findViewById(R.id.nav_FontGithub);
-//        githubFont.startRotate(this, true, FontAwesomeText.AnimationSpeed.SLOW);
 
-//        shimmerTextView = (ShimmerTextView) findViewById(R.id.logo_white);
+    opensourceFont = (FontAwesomeText) findViewById(R.id.nav_FontOpensource);
+
+    githubFont = (FontAwesomeText) findViewById(R.id.nav_FontGithub);
+
     shimmer = new Shimmer();
-//        shimmer.start(shimmerTextView);
 
     developerSim = (ShimmerTextView) findViewById(R.id.nav_ShimmerDeveloper);
     shimmer.start(developerSim);
@@ -103,10 +99,8 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 
     materialViewPager = (MaterialViewPager) findViewById(R.id.materialViewPager);
 
-//    floatingActionButton.setImageDrawable();
     drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
     nav = (LinearLayout) findViewById(R.id.left_drawer);
-
 
     toolbar = materialViewPager.getToolbar();
 
@@ -146,10 +140,9 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 
     materialViewPagerInit();
 
-    materialViewPager.getViewPager().setOffscreenPageLimit(materialViewPager.getViewPager().getAdapter().getCount());
     materialViewPager.getPagerTitleStrip().setViewPager(materialViewPager.getViewPager());
     materialViewPager.getViewPager().setCurrentItem(0);
-    materialViewPager.getViewPager().setOffscreenPageLimit(0);
+    materialViewPager.getViewPager().setOffscreenPageLimit(-1);
 
     sharedPreferences = getSharedPreferences("Alarm", MODE_PRIVATE);
     editor = sharedPreferences.edit();
@@ -171,31 +164,35 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
       Main_Lunch.setLabelText("DB에 저장된 값이 없습니다, 데이터를 다시받으세요");
       Main_Dinner.setLabelText("DB에 저장된 값이 없습니다, 데이터를 다시받으세요");
     }
-
-
     editor.commit();
-
   }
+
+  @Override
+  protected void onDestroy() {
+    System.gc();
+    MaterialViewPagerHelper.unregister(context);
+    super.onDestroy();
+  }
+
 
   void materialViewPagerInit() {
     materialViewPager.getViewPager().setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {
       int oldPosition = -1;
-
+      SparseArray<View> views = new SparseArray<View>();
 
       @Override
       public Fragment getItem(int i) {
         switch (i) {
           case 0:
 
-            LunchViewFragment lunchRecyclerViewFragment = new LunchViewFragment(0, getApplicationContext()).getFrag();
+            LunchViewFragment lunchRecyclerViewFragment = new LunchViewFragment(0, getApplicationContext(), v).getFrag();
             return lunchRecyclerViewFragment;
+
           case 1:
-            DinnerViewFragment dinnerRecyclerViewFragment = new DinnerViewFragment(1, getApplicationContext()).getFrag();
+            DinnerViewFragment dinnerRecyclerViewFragment = new DinnerViewFragment(1, getApplicationContext(), v).getFrag();
             return dinnerRecyclerViewFragment;
-//                    case 2:
-//                        return ScrollFragment.newInstance();
+
           default:
-//                        RateViewFragment rateViewFragment = new RateViewFragment(getApplicationContext()).getFrag();
             RateViewFragment rateViewFragment = new RateViewFragment(MainActivity.this).getFrag();
             return rateViewFragment;
         }
@@ -218,24 +215,18 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
           case 0:
 
             imgUrl = "http://arch.goeia.go.kr/archmain/?menugrp=cafe&master=home&act=exec&mode=fullpic&cafe_sid=2160";
-//                        color = getResources().getColor(Color.parseColor("#4169e1"));
             color = Color.parseColor("#4169e1");
             break;
 
           case 1:
             imgUrl = "http://batv.iansan.net/batvadmin/news/file_upload/data01/%ED%95%99%EA%B5%90.gif";
-//                        color = getResources().getColor(Color.parseColor("#000000"));
             color = Color.parseColor("#000000");
             break;
+
           case 2:
-            imgUrl = "http://www.droid-life.com/wp-content/uploads/2014/10/lollipop-wallpapers10.jpg";
+            imgUrl = "http://ppcj2.iptime.org/~kang/image/poster.png";
             color = getResources().getColor(R.color.cyan);
             break;
-          case 3:
-            imgUrl = "http://www.tothemobile.com/wp-content/uploads/2014/07/original.jpg";
-            color = getResources().getColor(R.color.red);
-            break;
-
         }
 
         int fadeDuration = 400;
@@ -266,6 +257,40 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
         }
         return "";
       }
+
+      @Override
+      public int getItemPosition(Object item) {
+        return POSITION_NONE;
+      }
+
+      @Override
+      public Object instantiateItem(View container, int position) {
+        View root = container;//refresh할 뷰
+        ((ViewPager) container).addView(root);
+        views.put(position, root);
+        return root;
+      }
+
+      @Override
+      public void destroyItem(View collection, int position, Object o) {
+        View view = (View) o;
+        ((ViewPager) collection).removeView(view);
+        views.remove(position);
+        view = null;
+      }
+
+      @Override
+      public void notifyDataSetChanged() {
+        int key = 0;
+        for (int i = 0; i < views.size(); i++) {
+          key = views.keyAt(i);
+          View view = views.get(key);
+          //refresh할 작업들
+        }
+        super.notifyDataSetChanged();
+      }
+
+
     });
   }
 
@@ -332,36 +357,15 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
         break;
       case R.id.Main_refresh: //ok
         CreateDB.CreateDataBase.reset = true;
-        materialViewPagerInit();
+        materialViewPager.getViewPager().getAdapter().notifyDataSetChanged();
+
         break;
       case R.id.Main_rate:  //ok
 
+        RateDialog rateDialog = new RateDialog(context, v.getRootView());
+        rateDialog.show();
         materialViewPager.getViewPager().setCurrentItem(2);
         break;
-
-
-//                DownloadDialog downloadDialog = new DownloadDialog(getApplicationContext());
-//                downloadDialog.show();
-
-//                dataBaseAdmin = new DataBaseAdmin(this);
-//                dataBaseAdmin.open();
-////dataBaseAdmin.deleteAll();
-//                dataBaseAdmin.insertData("date", "day", "lunch", "dinner");
-////                dataBaseAdmin.close();
-//                cursor = dataBaseAdmin.select();
-//
-//                while (cursor.moveToNext()) {
-//                    String date = cursor.getString(cursor.getColumnIndex("date"));
-//                    String day = cursor.getString(cursor.getColumnIndex("day"));
-//                    String lunch = cursor.getString(cursor.getColumnIndex("lunch"));
-//                    String dinner = cursor.getString(cursor.getColumnIndex("dinner"));
-//
-//                    Toast.makeText(this, date + day + lunch + dinner, Toast.LENGTH_LONG).show();
-//
-//
-//                }
-//                dataBaseAdmin.close();
-//                cursor.close();
 
 
       case R.id.Main_Lunch:

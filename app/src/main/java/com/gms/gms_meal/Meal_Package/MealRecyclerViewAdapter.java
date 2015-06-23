@@ -16,36 +16,10 @@ import java.util.ArrayList;
  */
 public class MealRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-  ArrayList<MealItemData> mealItemDataArrayList;
-
-  private AdapterView.OnItemClickListener listener;
-
   static final int TYPE_HEADER = 0;
   static final int TYPE_CELL = 1;
-
-  public static class BigCardMeal extends RecyclerView.ViewHolder {
-
-    public TextView bigMealTextView;
-
-    public BigCardMeal(View itemView) {
-      super(itemView);
-      bigMealTextView = (TextView) itemView.findViewById(R.id.mealBig);
-    }
-
-  }
-
-  public static class SmallCardMeal extends RecyclerView.ViewHolder {
-
-    public TextView smallMealTextView;
-    public TextView mealDate;
-
-    public SmallCardMeal(View itemView) {
-      super(itemView);
-      smallMealTextView = (TextView) itemView.findViewById(R.id.mealSmall);
-      mealDate = (TextView) itemView.findViewById(R.id.mealdate);
-    }
-
-  }
+  ArrayList<MealItemData> mealItemDataArrayList;
+  private AdapterView.OnItemClickListener listener;
 
   public MealRecyclerViewAdapter(ArrayList<MealItemData> mealItemDataArrayList) {
     this.mealItemDataArrayList = mealItemDataArrayList;
@@ -90,7 +64,6 @@ public class MealRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
     return null;
   }
 
-
   @Override
   public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
     switch (getItemViewType(position)) {
@@ -105,5 +78,29 @@ public class MealRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
         smallCardMeal.mealDate.setText(mealItemDataArrayList.get(position).getDate());
         break;
     }
+  }
+
+  public static class BigCardMeal extends RecyclerView.ViewHolder {
+
+    public TextView bigMealTextView;
+
+    public BigCardMeal(View itemView) {
+      super(itemView);
+      bigMealTextView = (TextView) itemView.findViewById(R.id.mealBig);
+    }
+
+  }
+
+  public static class SmallCardMeal extends RecyclerView.ViewHolder {
+
+    public TextView smallMealTextView;
+    public TextView mealDate;
+
+    public SmallCardMeal(View itemView) {
+      super(itemView);
+      smallMealTextView = (TextView) itemView.findViewById(R.id.mealSmall);
+      mealDate = (TextView) itemView.findViewById(R.id.mealdate);
+    }
+
   }
 }

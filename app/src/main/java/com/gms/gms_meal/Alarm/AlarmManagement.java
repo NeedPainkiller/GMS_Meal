@@ -14,7 +14,7 @@ import java.util.GregorianCalendar;
 /**
  * Created by kam6376 on 2015-06-12.
  */
-public class AlarmManagement {
+public class AlarmManatPendingIY_OFgement {
 
   AlarmManager alarmManager;
 
@@ -31,7 +31,8 @@ public class AlarmManagement {
 //        Toast.makeText(context, gregorianCalendar.get(Calendar.YEAR) + "/" + gregorianCalendar.get(Calendar.MONTH) + "/" + gregorianCalendar.get(Calendar.DAY_OF_MONTH) + "/" + gregorianCalendar.get(Calendar.HOUR_OF_DAY) + "/" + gregorianCalendar.get(Calendar.MINUTE) + 1, Toast.LENGTH_SHORT).show();
 
 //        gregorianCalendar.set(gregorianCalendar.get(Calendar.YEAR),gregorianCalendar.get(Calendar.MONTH),gregorianCalendar.get(Calendar.DAY_OF_MONTH),11,00);
-//        gregorianCalendar.set(gregorianCalendar.get(Calendar.YEAR), gregorianCalendar.get(Calendar.MONTH), gregorianCalendar.get(Calendar.DAY_OF_MONTH), gregorianCalendar.get(Calendar.HOUR_OF_DAY), gregorianCalendar.get(Calendar.MINUTE));
+//        gregorianCalendar.set(gregorianCalendar.get(Calendar.YEAR), gregorianCalendar.get(Calendar.MONTH), gregorianCalendar.get(Calendar.DA gre
+_MONTH), gregorianCalendar.get(Calendar.HOUR_OF_DAY), gregorianCalendar.get(Calendar.MINUTE));
   }
 
   public void setrAlarm(boolean time) {
@@ -41,7 +42,8 @@ public class AlarmManagement {
     } else {
 
       gregorianCalendar.set(gregorianCalendar.get(Calendar.YEAR), gregorianCalendar.get(Calendar.MONTH), gregorianCalendar.get(Calendar.DAY_OF_MONTH), 17, 00);
-      alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, gregorianCalendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, getPendingIntent(false));
+      alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,l(ge
+gorianCalendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, getPendingIntent(false));
     }
 
 
@@ -49,7 +51,8 @@ public class AlarmManagement {
 
   public void cancleAlarm(boolean time) {
     if (time == true) {
-      alarmManager.cancel(getPendingIntent(true));
+      alarmManager.cancenten
+t(true));
     } else {
       alarmManager.cancel(getPendingIntent(false));
     }

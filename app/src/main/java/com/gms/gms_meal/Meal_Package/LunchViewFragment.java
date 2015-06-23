@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,7 +15,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.github.florent37.materialviewpager.MaterialViewPagerHelper;
 import com.github.florent37.materialviewpager.adapter.RecyclerViewMaterialAdapter;
@@ -22,7 +22,6 @@ import com.gms.gms_meal.DB.CreateDB;
 import com.gms.gms_meal.DB.DataBaseAdmin;
 import com.gms.gms_meal.R;
 import com.gms.gms_meal.tools.GetMeal;
-import com.gms.gms_meal.tools.GetNetworkState;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -34,33 +33,25 @@ import java.util.Date;
  */
 public class LunchViewFragment extends Fragment {
 
+  public static Handler getMealHandler;
   private RecyclerView mRecyclerView;
   private RecyclerView.Adapter mAdapter;
+  private ArrayList<MealItemData> mealItemDataArrayList = new ArrayList<MealItemData>();
+  private int pos;
+  private Context context;
+  private View v;
+  private GetMeal getMeal;
 
-  ArrayList<MealItemData> mealItemDataArrayList = new ArrayList<MealItemData>();
-  int pos;
+  private DataBaseAdmin dataBaseAdmin;
+  private Cursor cursor;
 
+  private SharedPreferences sharedPreferences;
+  private SharedPreferences.Editor editor;
 
-  Context context;
-  public static Handler getMealHandler;
-
-  GetMeal getMeal;
-
-  DataBaseAdmin dataBaseAdmin;
-
-  Cursor cursor;
-
-  SharedPreferences sharedPreferences;
-  SharedPreferences.Editor editor;
-
-  //    RecyclerViewFragment newInstance(int position) {
-//        pos = position;
-//
-//        return new RecyclerViewFragment();
-//    }
-  public LunchViewFragment(int position, Context context) {
+  public LunchViewFragment(int position, Context context, View v) {
     pos = position;
     this.context = context;
+    this.v = v;
   }
 
   public LunchViewFragment getFrag() {
@@ -71,14 +62,12 @@ public class LunchViewFragment extends Fragment {
   @Override
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
     return inflater.inflate(R.layout.fragment_recyclerview, container, false);
-
   }
 
   @Override
   public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-//        mRecyclerView.setItemAnimator(new SlideInLeftAnimator());
     RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
     mRecyclerView.setLayoutManager(layoutManager);
     mRecyclerView.setHasFixedSize(true);
@@ -93,10 +82,6 @@ public class LunchViewFragment extends Fragment {
     editor = sharedPreferences.edit();
 
     init();
-//        context = getActivity();
-
-
-//        mRecyclerView.setAdapter(new SlideInLeftAnimationAdapter(mAdapter));
 
     MaterialViewPagerHelper.registerRecyclerView(getActivity(), mRecyclerView, null);
 
@@ -114,22 +99,27 @@ public class LunchViewFragment extends Fragment {
           dataBaseAdmin.insertData(info[0], info[1], info[2], info[3]);
           editor.putBoolean("canAlarm", true);
           editor.commit();
+
         }
 
-
         mealItemDataArrayList.add(new MealItemData(info[0], info[1], info[2]));
-
         mAdapter.notifyDataSetChanged();
 
+        Bundle data = new Bundle();
+        data.putStringArray("info", info);
+
+        Message message = DinnerViewFragment.getMealHandler.obtainMessage();
+        message.setData(data);
+        DinnerViewFragment.getMealHandler.sendMessage(message);
       }
     };
 
   }
 
-
   @Override
-  public void onDestroyView() {
+  public void onDestroy() {
     super.onDestroyView();
+//    MaterialViewPagerHelper.unregister(context);
     dataBaseAdmin.close();
     cursor.close();
   }
@@ -137,7 +127,7 @@ public class LunchViewFragment extends Fragment {
   boolean getCount() {
     if (cursor.getCount() == 0 || CreateDB.CreateDataBase.reset == true) {
       dataBaseAdmin.deleteAll();
-      Toast.makeText(context, "LunchDB" + cursor.getCount(), Toast.LENGTH_SHORT).show();
+
 
       return false;
 
@@ -156,14 +146,14 @@ public class LunchViewFragment extends Fragment {
       } else {
         throw new Exception();
       }
-      Toast.makeText(context, "LunchDB" + cursor.getCount(), Toast.LENGTH_SHORT).show();
+      Snackbar.make(v, "DB에 저장된 리스트를 불러옵니다 : " + cursor.getCount() + "개", Snackbar.LENGTH_SHORT).show();
+
       Date now = new Date();
 
       SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
       now.setDate(now.getDate());
 
       String index = format.format(now);
-
 
       boolean find = false;
 
@@ -178,21 +168,17 @@ public class LunchViewFragment extends Fragment {
           mealItemDataArrayList.add(new MealItemData(date, day, lunch));
 
           mAdapter.notifyDataSetChanged();
-//                        Toast.makeText(context, date + day + lunch + dinner, Toast.LENGTH_LONG).show();
+
         } else {
           dataBaseAdmin.deleteRaw(cursor.getString(cursor.getColumnIndex("date")));
-//                    Toast.makeText(context, "index fucked", Toast.LENGTH_SHORT).show();
+
           if (getCount()) {
 
           } else {
             throw new Exception();
           }
         }
-
-
       }
-//            dataBaseAdmin.close();
-//            cursor.close();
 
     } catch (Exception e) {
       Log.e("lunch", "lunch : " + e.getMessage());
@@ -201,27 +187,19 @@ public class LunchViewFragment extends Fragment {
       editor.commit();
       dataBaseAdmin.deleteAll();
 
-      Toast.makeText(context, "LunchNet" + cursor.getCount(), Toast.LENGTH_SHORT).show();
+      Snackbar.make(v, "급식정보를 네트워크로 받아오는중....", Snackbar.LENGTH_SHORT).show();
 
       Calendar calendar = Calendar.getInstance();
       int today = calendar.get(Calendar.DAY_OF_MONTH);
       calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, today);
 
       int lastDay = calendar.getActualMaximum(Calendar.DATE);
-      GetNetworkState getNetworkState = new GetNetworkState(getActivity());
-//            if (getNetworkState.getState() == 1) {
+
       for (int i = 0; i < lastDay - today; ++i) {
-//            mealItemDataArrayList.add(new MealItemData("1025","zs"));
         getMeal = new GetMeal("lunch", pos);
         getMeal.execute(i);
-
       }
-//            } else {
-//                getMeal = new GetMeal("lunch", pos);
-//                getMeal.execute(0);
-//            }
     } finally {
-
       CreateDB.CreateDataBase.reset = false;
     }
   }

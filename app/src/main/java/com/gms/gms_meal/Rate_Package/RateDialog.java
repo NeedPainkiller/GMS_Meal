@@ -4,14 +4,14 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
 
 import com.andexert.library.RippleView;
 import com.gms.gms_meal.R;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -30,14 +30,16 @@ import java.util.Date;
  * Created by kam6376 on 2015-06-19.
  */
 public class RateDialog extends Dialog implements RippleView.OnRippleCompleteListener {
-  RippleView rippleFuck, rippleShit, rippleSoso, rippleGood, rippleWell;
+  private RippleView rippleFuck, rippleShit, rippleSoso, rippleGood, rippleWell;
 
 
-  Context context;
+  private Context context;
+  private View v;
 
-  public RateDialog(Context context) {
+  public RateDialog(Context context, View v) {
     super(context);
     this.context = context;
+    this.v = v;
   }
 
   @Override
@@ -62,7 +64,7 @@ public class RateDialog extends Dialog implements RippleView.OnRippleCompleteLis
 
   @Override
   public void onComplete(RippleView rippleView) {
-  String index = "0";
+    String index = "0";
     switch (rippleView.getId()) {
       case R.id.rateRippleFuck:
         index = "1";
@@ -81,6 +83,7 @@ public class RateDialog extends Dialog implements RippleView.OnRippleCompleteLis
         break;
 
     }
+    Snackbar.make(v, index + "점 업로딩..", Snackbar.LENGTH_SHORT).show();
     new PostRate().execute(index);
 
   }
@@ -92,7 +95,7 @@ public class RateDialog extends Dialog implements RippleView.OnRippleCompleteLis
     @Override
     protected String doInBackground(String... params) {
       Date now = new Date();
-      SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+      SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM.dd");
       date = simpleDateFormat.format(now);
 
       rate = params[0];
@@ -112,27 +115,23 @@ public class RateDialog extends Dialog implements RippleView.OnRippleCompleteLis
       try {
         UrlEncodedFormEntity urlEncodedFormEntity = new UrlEncodedFormEntity(postRateValues, "UTF-8");
         httpPost.setEntity(urlEncodedFormEntity);
-        HttpResponse httpResponse =httpClient.execute(httpPost);
-        HttpEntity httpEntity = httpResponse.getEntity();
-//        EntityUtils.getContentCharSet(urlEncodedFormEntity);
-
-        return EntityUtils.toString(httpEntity);
+        httpClient.execute(httpPost);
+        return EntityUtils.getContentCharSet(urlEncodedFormEntity);
 
       } catch (Exception e) {
         Log.e("Rate", "is fucked : " + e.getMessage());
-      }finally {
+      } finally {
         dismiss();
         httpPost.abort();
-        return null;
       }
-
+      return null;
 
     }
 
     @Override
     protected void onPostExecute(String s) {
       super.onPostExecute(s);
-      Log.e("Rate", "is succesed : " +s);
+      Snackbar.make(v, "등록되었습니다.", Snackbar.LENGTH_SHORT).show();
     }
 
   }

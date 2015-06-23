@@ -9,13 +9,10 @@ import java.util.Map;
 
 public class FontAwesome {
 
-  private static final Map<String, String> faMap = new HashMap<>();
-
-  private static Typeface font;
-
   public static final float DEFAULT_FONT_SIZE = 14.0f;
-
   static final String UNKNOWN_CODE = "fa-question";
+  private static final Map<String, String> faMap = new HashMap<>();
+  private static Typeface font;
 
   //font awesome map as per
   //http://fortawesome.github.io/Font-Awesome/cheatsheet/

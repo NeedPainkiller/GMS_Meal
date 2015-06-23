@@ -41,7 +41,14 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@null">
-
+          <com.gms.gms_meal.lib.FontAwesomeText
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="70dp"
+              app:fa_icon="fa-lightbulb-o"
+              android:id="@+id/smallFontRate"
+              android:layout_centerVertical="true"
+              android:layout_centerHorizontal="true"/>
           <TextView
               android:id="@+id/smallRate"
               android:layout_width="wrap_content"
@@ -52,14 +59,7 @@
               android:layout_gravity="center_horizontal|center_vertical"
               android:text="5.0"
               android:textSize="50sp"/>
-          <com.gms.gms_meal.lib.FontAwesomeText
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textSize="70dp"
-              app:fa_icon="fa-lightbulb-o"
-              android:id="@+id/smallFontRate"
-              android:layout_centerVertical="true"
-              android:layout_centerHorizontal="true"/>
+
 
         </RelativeLayout>
 
