@@ -11,9 +11,9 @@ GMS 모바일 프로그래밍 수업의 수행평가 결과물이며 3분기 내
 ![Valid XHTML](http://ppcj2.iptime.org/~kang/image/launcher_shadow.png).
 
 ---
-<snippet>
-  <content><![CDATA[
-# ${1:Project Name}
+
+  <content>
+# G밥
 
 TODO: Write a project description
 
@@ -44,6 +44,6 @@ TODO: Write credits
 ## License
 
 TODO: Write license
-]]></content>
+</content>
   <tabTrigger>readme</tabTrigger>
-</snippet>
+
