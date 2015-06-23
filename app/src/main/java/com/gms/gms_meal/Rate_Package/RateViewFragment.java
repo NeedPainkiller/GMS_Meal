@@ -17,7 +17,6 @@ import android.view.ViewGroup;
 import com.github.florent37.materialviewpager.MaterialViewPagerHelper;
 import com.github.florent37.materialviewpager.adapter.RecyclerViewMaterialAdapter;
 import com.gms.gms_meal.R;
-import com.gms.gms_meal.tools.GetRatePHP;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -66,41 +65,44 @@ public class RateViewFragment extends Fragment {
       public void handleMessage(Message msg) {
         super.handleMessage(msg);
 
-        String resource = msg.getData().getString("rate");
-
         String rate;
         String date;
 
-        try {
-          if (resource == null) {
-            Log.e("postErr", "resource is null");
+        String resource = msg.getData().getString("rate");
+        if(resource!=null){
+          try {
+
+
+            JSONObject root = new JSONObject(resource);
+            JSONArray jsonArray = root.getJSONArray("results");
+            String numRes = root.getString("num_results");
+            if (Integer.parseInt(numRes) == 0) {
+              Snackbar.make(view, "DB서버에 Data가 없습니다", Snackbar.LENGTH_SHORT).show();
+            } else {
+              Snackbar.make(view, numRes + " 개의 평점이 있습니다.", Snackbar.LENGTH_SHORT).show();
+            }
+            for (int i = 0; i < jsonArray.length(); i++) {
+              JSONObject jsonObject = jsonArray.getJSONObject(i);
+              rate = jsonObject.getString("rate");
+              date = jsonObject.getString("date");
+
+              rateItemDataArrayList.add(new RateItemData(rate, "익명", date));
+
+              mAdapter.notifyDataSetChanged();
+            }
+            Collections.reverse(rateItemDataArrayList);
+          } catch (Exception e) {
+            Log.e("postErr", "JSON is fucked");
+            Log.e("postErr", e.getMessage());
+
           }
+        }else{
+          rateItemDataArrayList.add(new RateItemData("0", "DB Error", "DB 서버주소가 누락되었습니다."));
 
-          JSONObject root = new JSONObject(resource);
-          JSONArray jsonArray = root.getJSONArray("results");
-          String numRes = root.getString("num_results");
-          if (Integer.parseInt(numRes) == 0) {
-            Snackbar.make(view, "DB서버에 Data가 없습니다", Snackbar.LENGTH_SHORT).show();
-          } else {
-            Snackbar.make(view, numRes + " 개의 평점이 있습니다.", Snackbar.LENGTH_SHORT).show();
-          }
-          for (int i = 0; i < jsonArray.length(); i++) {
-            JSONObject jsonObject = jsonArray.getJSONObject(i);
-            rate = jsonObject.getString("rate");
-            date = jsonObject.getString("date");
-
-            rateItemDataArrayList.add(new RateItemData(rate, "익명", date));
-
-            mAdapter.notifyDataSetChanged();
-          }
-          Collections.reverse(rateItemDataArrayList);
-        } catch (Exception e) {
-          Log.e("postErr", "JSON is fucked");
-          Log.e("postErr", e.getMessage());
-
+          mAdapter.notifyDataSetChanged();
         }
       }
     };
-    new GetRatePHP().execute();
+//    new GetRatePHP().execute();
   }
 }

@@ -41,4 +41,5 @@ dependencies {
   compile 'com.romainpiel.shimmer:library:1.3.0'
   compile 'com.android.support:support-v4:22.2.0'
   compile 'com.android.support:design:22.2.0'
+  compile 'jp.wasabeef:recyclerview-animators:1.2.0@aar'
 }

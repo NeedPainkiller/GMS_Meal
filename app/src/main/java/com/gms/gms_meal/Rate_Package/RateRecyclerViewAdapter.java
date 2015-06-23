@@ -7,8 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.GMS.security.RateDialog;
 import com.andexert.library.RippleView;
 import com.gms.gms_meal.R;
 import com.gms.gms_meal.lib.FontAwesomeText;
@@ -105,7 +105,7 @@ public class RateRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
         bigCardRate.bigRipple.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
           @Override
           public void onComplete(RippleView rippleView) {
-            Toast.makeText(context, "bigRipple", Toast.LENGTH_SHORT).show();
+
 
             RateDialog rateDialog = new RateDialog(context, v);
             rateDialog.show();
@@ -146,6 +146,8 @@ public class RateRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
             smallCardRate.smallFontRate.startFlashing(context, true, FontAwesomeText.AnimationSpeed.SLOW);
 
             break;
+          case 0:
+            smallCardRate.smallFontRate.setTextColor(Color.parseColor("#a9a9a9"));
         }
         break;
     }

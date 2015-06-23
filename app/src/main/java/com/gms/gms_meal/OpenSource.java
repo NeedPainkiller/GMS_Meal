@@ -22,7 +22,8 @@ public class OpenSource extends ActionBarActivity implements OnRippleCompleteLis
       FloatingActionButton_license,
       ParallaxPagerTransformer_license,
       shimmer_license,
-      androidBootstrap_license;
+      androidBootstrap_license,
+      GoogleMaterialIcon_license;
 
 
   Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -45,6 +46,8 @@ public class OpenSource extends ActionBarActivity implements OnRippleCompleteLis
     shimmer_license.setOnRippleCompleteListener(this);
     androidBootstrap_license = (RippleView) findViewById(R.id.androidBootstrap_license);
     androidBootstrap_license.setOnRippleCompleteListener(this);
+    GoogleMaterialIcon_license = (RippleView) findViewById(R.id.GoogleMaterialIcon_license);
+    GoogleMaterialIcon_license.setOnRippleCompleteListener(this);
 
   }
 
@@ -76,7 +79,10 @@ public class OpenSource extends ActionBarActivity implements OnRippleCompleteLis
         Git = Uri.parse("https://github.com/Bearded-Hen/Android-Bootstrap");
 
         break;
+      case R.id.GoogleMaterialIcon_license:
+        Git = Uri.parse("http://google.github.io/material-design-icons/#getting-icons");
 
+        break;
 
       default:
         break;

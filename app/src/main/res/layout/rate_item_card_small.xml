@@ -85,6 +85,7 @@
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:layout_gravity="center_vertical|center_horizontal"
+              android:textSize="30dp"
               app:fa_icon="fa-user"
               android:layout_weight="1"
               android:layout_marginRight="3dp"></com.gms.gms_meal.lib.FontAwesomeText>

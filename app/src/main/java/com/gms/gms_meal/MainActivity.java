@@ -24,6 +24,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.GMS.security.RateDialog;
 import com.andexert.library.RippleView;
 import com.andexert.library.RippleView.OnRippleCompleteListener;
 import com.github.clans.fab.FloatingActionButton;
@@ -35,7 +36,6 @@ import com.gms.gms_meal.DB.CreateDB;
 import com.gms.gms_meal.Dev.DeveloperActivity;
 import com.gms.gms_meal.Meal_Package.DinnerViewFragment;
 import com.gms.gms_meal.Meal_Package.LunchViewFragment;
-import com.gms.gms_meal.Rate_Package.RateDialog;
 import com.gms.gms_meal.Rate_Package.RateViewFragment;
 import com.gms.gms_meal.lib.FontAwesomeText;
 import com.romainpiel.shimmer.Shimmer;
@@ -161,8 +161,8 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
     if (!sharedPreferences.getBoolean("canAlarm", false)) {
       Main_Lunch.setEnabled(false);
       Main_Dinner.setEnabled(false);
-      Main_Lunch.setLabelText("DB에 저장된 값이 없습니다, 데이터를 다시받으세요");
-      Main_Dinner.setLabelText("DB에 저장된 값이 없습니다, 데이터를 다시받으세요");
+      Main_Lunch.setLabelText("DB?? ????? ???? ???????, ??????? ??????????");
+      Main_Dinner.setLabelText("DB?? ????? ???? ???????, ??????? ??????????");
     }
     editor.commit();
   }
@@ -251,9 +251,9 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
           case 1:
             return getString(R.string.Dinner).toUpperCase(locale);
           case 2:
-            return "평점";
+            return "????";
           case 3:
-            return "GMS스레";
+            return "GMS????";
         }
         return "";
       }
@@ -265,7 +265,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 
       @Override
       public Object instantiateItem(View container, int position) {
-        View root = container;//refresh할 뷰
+        View root = container;//refresh?? ??
         ((ViewPager) container).addView(root);
         views.put(position, root);
         return root;
@@ -285,7 +285,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
         for (int i = 0; i < views.size(); i++) {
           key = views.keyAt(i);
           View view = views.get(key);
-          //refresh할 작업들
+          //refresh?? ?????
         }
         super.notifyDataSetChanged();
       }
@@ -373,18 +373,18 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
           AlarmManagement alarmManagement = new AlarmManagement(getApplicationContext());
           if (!sharedPreferences.getBoolean("lunch", false)) {
             Main_Lunch.setImageResource(R.mipmap.ic_alarm_on);
-            Main_Lunch.setLabelText("중식알림(11:00)");
+            Main_Lunch.setLabelText("점심알람 설정 (11:00)");
             editor.putBoolean("lunch", true);
             alarmManagement.setrAlarm(true);
           } else {
             Main_Lunch.setImageResource(R.mipmap.ic_alarm);
             editor.putBoolean("lunch", false);
             alarmManagement.cancleAlarm(true);
-            Main_Lunch.setLabelText("중식알림(OFF)");
+            Main_Lunch.setLabelText("점심알람 (OFF)");
           }
           editor.commit();
         } else {
-          Main_Lunch.setLabelText("DB에 저장된 값이 없습니다, 데이터를 다시받으세요");
+          Main_Lunch.setLabelText("기초데이터가 없을 시에는 알람 설정이 불가능합니다.");
         }
 
         break;
@@ -393,18 +393,18 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
           AlarmManagement alarmManagement = new AlarmManagement(getApplicationContext());
           if (!sharedPreferences.getBoolean("dinner", false)) {
             Main_Dinner.setImageResource(R.mipmap.ic_alarm_on);
-            Main_Dinner.setLabelText("석식알림(5:00)");
+            Main_Dinner.setLabelText("석식알람 설정 (5:00)");
             editor.putBoolean("dinner", true);
             alarmManagement.setrAlarm(false);
           } else {
             Main_Dinner.setImageResource(R.mipmap.ic_alarm);
-            Main_Dinner.setLabelText("석식알림(OFF)");
+            Main_Dinner.setLabelText("석식알람 (OFF)");
             editor.putBoolean("dinner", false);
             alarmManagement.cancleAlarm(false);
           }
           editor.commit();
         } else {
-          Main_Dinner.setLabelText("DB에 저장된 값이 없습니다, 데이터를 다시받으세요");
+          Main_Dinner.setLabelText("기초데이터가 없을 시에는 알람 설정이 불가능합니다.");
         }
 
         break;
