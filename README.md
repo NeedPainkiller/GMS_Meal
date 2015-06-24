@@ -28,13 +28,13 @@ http://youtu.be/WeSt1NXLhw4
 3. 데이터절약 가능!
 
 ## Library
-* [MaterialViewPager](https://github.com/username/repo/blob/branch/docs/more_words.md)
-* * [MaterialViewPager](https://github.com/username/repo/blob/branch/docs/more_words.md)
-* * [MaterialViewPager](https://github.com/username/repo/blob/branch/docs/more_words.md)
-* * [MaterialViewPager](https://github.com/username/repo/blob/branch/docs/more_words.md)
-* * [MaterialViewPager](https://github.com/username/repo/blob/branch/docs/more_words.md)
-* * [MaterialViewPager](https://github.com/username/repo/blob/branch/docs/more_words.md)
-* * [MaterialViewPager](https://github.com/username/repo/blob/branch/docs/more_words.md)
+* [MaterialViewPager](https://github.com/florent37/MaterialViewPager)
+* [RippleEffect](https://github.com/traex/RippleEffect)
+* [FloatingActionButton](https://github.com/Clans/FloatingActionButton)
+* [ParallaxPagerTransformer](https://github.com/xgc1986/ParallaxPagerTransformer)
+* [Shimmer-android](https://github.com/RomainPiel/Shimmer-android)
+* [Android-Bootstrap](https://github.com/Bearded-Hen/Android-Bootstrap)
+* [GoogleMaterialIcon](http://google.github.io/material-design-icons/#getting-icons)
 
 
 
