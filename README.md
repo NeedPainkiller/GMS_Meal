@@ -16,21 +16,22 @@ GMS 모바일 프로그래밍 수업의 수행평가 결과물이며 3분기 내
 # G밥
 2015년 경기모바일과학고등학교 3학년 7반 모바일 컨텐츠과 강영원군이 즉석제작한 안드로이드 어플리케이션입니다.
 
-## Installation
+## OverView
 
 7월 초 Google Play 등록예정 
 http://youtu.be/WeSt1NXLhw4
 
-## Usage
+## Why GMS must used it?
 
 1. 급식 저장기능
 2. 평점시스템 도입
 3. 데이터절약 가능!
 
-## History
+## Library
+* [Absolute README link](https://github.com/username/repo/blob/branch/docs/more_words.md)
 
-TODO: Write history
+
 
 </content>
-  <tabTrigger>readme</tabTrigger>
+
 
