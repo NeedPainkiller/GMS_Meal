@@ -26,8 +26,7 @@ public class DataBaseAdmin {
       databaseHelper = new DataBaseHelper(context, DATABASE_NAME, null, DATABASE_VERSION);
       sqLiteDatabase = databaseHelper.getWritableDatabase();
     } catch (Exception e) {
-//            Log.e("openErr", "" + e.getMessage());
-//            Toast.makeText(context, "openErr", Toast.LENGTH_SHORT).show();
+
     }
     return this;
   }
@@ -37,7 +36,7 @@ public class DataBaseAdmin {
   }
 
   public void insertData(String date, String day, String lunch, String dinner) {
-//        sqLiteDatabase = databaseHelper.getWritableDatabase();
+
     ContentValues contentValues = new ContentValues();
     contentValues.put(CreateDB.CreateDataBase.DATE, date);
     contentValues.put(CreateDB.CreateDataBase.DAY, day);
@@ -56,11 +55,10 @@ public class DataBaseAdmin {
     Toast.makeText(context, "deleteRaw = " + date, Toast.LENGTH_SHORT).show();
     return sqLiteDatabase.delete(CreateDB.CreateDataBase._TABLE_NAME, CreateDB.CreateDataBase.DATE + "=?", new String[]{date}) > 0;
 
-
   }
 
   public Cursor select() {
-//        sqLiteDatabase = databaseHelper.getReadableDatabase();
+
     Cursor cursor = sqLiteDatabase.query(CreateDB.CreateDataBase._TABLE_NAME, null, null, null, null, null, null);
     return cursor;
   }

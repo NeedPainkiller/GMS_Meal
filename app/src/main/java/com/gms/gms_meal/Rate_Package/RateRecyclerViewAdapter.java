@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.GMS.security.RateDialog;
 import com.andexert.library.RippleView;
 import com.gms.gms_meal.R;
 import com.gms.gms_meal.lib.FontAwesomeText;
@@ -107,7 +106,7 @@ public class RateRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
           public void onComplete(RippleView rippleView) {
 
 
-            RateDialog rateDialog = new RateDialog(context, v);
+            RateDialog rateDialog = new RateDialog(context,v);
             rateDialog.show();
           }
         });

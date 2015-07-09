@@ -8,7 +8,6 @@ import android.provider.BaseColumns;
 public class CreateDB {
   public static final class CreateDataBase implements BaseColumns {
 
-
     public static final String DATE = "date";
     public static final String DAY = "day";
     public static final String LUNCH = "lunch";

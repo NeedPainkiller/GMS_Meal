@@ -63,7 +63,7 @@ public class DinnerViewFragment extends Fragment {
     RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
     mRecyclerView.setLayoutManager(layoutManager);
     mRecyclerView.setHasFixedSize(true);
-    mAdapter = new RecyclerViewMaterialAdapter(new MealRecyclerViewAdapter(mealItemDataArrayList));
+    mAdapter = new RecyclerViewMaterialAdapter(new MealRecyclerViewAdapter(mealItemDataArrayList,getActivity()));
     mRecyclerView.setAdapter(mAdapter);
 
     dataBaseAdmin = new DataBaseAdmin(context);
@@ -85,7 +85,7 @@ public class DinnerViewFragment extends Fragment {
         mealItemDataArrayList.add(new MealItemData(info[0], info[1], info[3]));
 
         mAdapter.notifyDataSetChanged();
-        dataBaseAdmin.insertData(info[0], info[1], info[2], info[3]);
+//        dataBaseAdmin.insertData(info[0], info[1], info[2], info[3]);
 
         mRecyclerView.scrollToPosition(RecyclerView.NO_POSITION);
       }

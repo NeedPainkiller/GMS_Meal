@@ -27,13 +27,14 @@ public class GetRatePHP extends AsyncTask<Void, Void, String> {
   @Override
   protected void onPreExecute() {
     super.onPreExecute();
+
   }
 
   @Override
   protected String doInBackground(Void... params) {
 
     HttpClient httpClient = new DefaultHttpClient();
-    HttpGet httpGet = new HttpGet("");
+    HttpGet httpGet = new HttpGet("http://ppcj2.iptime.org/~kang/getRate.php");
 
     try {
       HttpResponse httpResponse = httpClient.execute(httpGet);
@@ -57,6 +58,7 @@ public class GetRatePHP extends AsyncTask<Void, Void, String> {
   @Override
   protected void onPostExecute(String resource) {
     super.onPostExecute(resource);
+
     Bundle data = new Bundle();
     Log.e("resource", resource);
 

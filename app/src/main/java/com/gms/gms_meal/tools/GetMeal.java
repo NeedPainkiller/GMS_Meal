@@ -33,9 +33,15 @@ public class GetMeal extends AsyncTask<Integer, Void, String[]> {
   }
 
   @Override
+  protected void onCancelled(String[] strings) {
+    super.onCancelled(strings);
+  }
+
+  @Override
   protected void onPreExecute() {
 
     super.onPreExecute();
+
   }
 
   @SuppressWarnings("deprecation")
@@ -67,6 +73,7 @@ public class GetMeal extends AsyncTask<Integer, Void, String[]> {
 
       buf = new BufferedInputStream(urlConnection.getInputStream());// 버퍼에
       // ULR삽입
+
 
       BufferedReader bufreader = new BufferedReader(new InputStreamReader(buf, "euc-kr")); // 한글 인코딩으로 버퍼를
       // 읽음

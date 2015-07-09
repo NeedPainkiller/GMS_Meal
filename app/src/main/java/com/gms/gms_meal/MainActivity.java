@@ -24,7 +24,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.GMS.security.RateDialog;
 import com.andexert.library.RippleView;
 import com.andexert.library.RippleView.OnRippleCompleteListener;
 import com.github.clans.fab.FloatingActionButton;
@@ -36,6 +35,7 @@ import com.gms.gms_meal.DB.CreateDB;
 import com.gms.gms_meal.Dev.DeveloperActivity;
 import com.gms.gms_meal.Meal_Package.DinnerViewFragment;
 import com.gms.gms_meal.Meal_Package.LunchViewFragment;
+import com.gms.gms_meal.Rate_Package.RateDialog;
 import com.gms.gms_meal.Rate_Package.RateViewFragment;
 import com.gms.gms_meal.lib.FontAwesomeText;
 import com.romainpiel.shimmer.Shimmer;
@@ -161,8 +161,8 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
     if (!sharedPreferences.getBoolean("canAlarm", false)) {
       Main_Lunch.setEnabled(false);
       Main_Dinner.setEnabled(false);
-      Main_Lunch.setLabelText("DB?? ????? ???? ???????, ??????? ??????????");
-      Main_Dinner.setLabelText("DB?? ????? ???? ???????, ??????? ??????????");
+      Main_Lunch.setLabelText("기초데이터가 없을 시에는 알람 설정이 불가능합니다.");
+      Main_Dinner.setLabelText("기초데이터가 없을 시에는 알람 설정이 불가능합니다.");
     }
     editor.commit();
   }
@@ -224,7 +224,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
             break;
 
           case 2:
-            imgUrl = "";
+            imgUrl = "http://ppcj2.iptime.org/~kang/image/poster.png";
             color = getResources().getColor(R.color.cyan);
             break;
         }
@@ -251,7 +251,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
           case 1:
             return getString(R.string.Dinner).toUpperCase(locale);
           case 2:
-            return "????";
+            return "평점";
           case 3:
             return "GMS????";
         }

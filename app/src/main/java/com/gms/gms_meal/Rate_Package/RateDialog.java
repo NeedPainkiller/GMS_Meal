@@ -25,7 +25,6 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
-import org.apache.http.util.EntityUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -93,12 +92,12 @@ public class RateDialog extends Dialog implements RippleView.OnRippleCompleteLis
 
   }
 
-  class PostRate extends AsyncTask<String, Void, String> {
+  class PostRate extends AsyncTask<String, Void, Boolean> {
     String rate;
     String date;
 
     @Override
-    protected String doInBackground(String... params) {
+    protected Boolean doInBackground(String... params) {
       Date now = new Date();
       SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM.dd");
       date = simpleDateFormat.format(now);
@@ -109,7 +108,7 @@ public class RateDialog extends Dialog implements RippleView.OnRippleCompleteLis
       postRateValues.add(new BasicNameValuePair("rate", rate));
       postRateValues.add(new BasicNameValuePair("date", date));
       HttpClient httpClient = new DefaultHttpClient();
-      HttpPost httpPost = new HttpPost("");
+      HttpPost httpPost = new HttpPost("http://ppcj2.iptime.org/~kang/postRate.php");
 
       HttpParams httpParams = httpClient.getParams();
       httpPost.setParams(httpParams);
@@ -121,22 +120,29 @@ public class RateDialog extends Dialog implements RippleView.OnRippleCompleteLis
         UrlEncodedFormEntity urlEncodedFormEntity = new UrlEncodedFormEntity(postRateValues, "UTF-8");
         httpPost.setEntity(urlEncodedFormEntity);
         httpClient.execute(httpPost);
-        return EntityUtils.getContentCharSet(urlEncodedFormEntity);
+//        return EntityUtils.getContentCharSet(urlEncodedFormEntity);
+        return true;
 
       } catch (Exception e) {
         Log.e("Rate", "is fucked : " + e.getMessage());
+        return false;
       } finally {
         dismiss();
         httpPost.abort();
       }
-      return null;
+
 
     }
 
     @Override
-    protected void onPostExecute(String s) {
+    protected void onPostExecute(Boolean s) {
       super.onPostExecute(s);
-      Snackbar.make(v, "등록되었습니다.", Snackbar.LENGTH_SHORT).show();
+      if (s == true) {
+        Snackbar.make(v, "등록되었습니다.", Snackbar.LENGTH_SHORT).show();
+      } else {
+        Snackbar.make(v, "등록 실패.", Snackbar.LENGTH_SHORT).show();
+      }
+
     }
 
   }

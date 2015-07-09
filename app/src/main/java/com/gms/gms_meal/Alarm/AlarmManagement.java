@@ -20,8 +20,8 @@ public class AlarmManagement {
   Context context;
 
   public AlarmManagement(Context context) {
-    this.context = context;
 
+    this.context = context;
     alarmManager = (AlarmManager) this.context.getSystemService(Context.ALARM_SERVICE);
     gregorianCalendar = new GregorianCalendar();
 
@@ -31,8 +31,8 @@ public class AlarmManagement {
     if (time == true) {
       gregorianCalendar.set(gregorianCalendar.get(Calendar.YEAR), gregorianCalendar.get(Calendar.MONTH), gregorianCalendar.get(Calendar.DAY_OF_MONTH), 11, 00);
       alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, gregorianCalendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, getPendingIntent(true));
-    } else {
 
+    } else {
       gregorianCalendar.set(gregorianCalendar.get(Calendar.YEAR), gregorianCalendar.get(Calendar.MONTH), gregorianCalendar.get(Calendar.DAY_OF_MONTH), 17, 00);
       alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, gregorianCalendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, getPendingIntent(false));
     }

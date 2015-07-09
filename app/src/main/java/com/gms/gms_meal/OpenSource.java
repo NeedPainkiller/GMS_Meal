@@ -36,16 +36,22 @@ public class OpenSource extends ActionBarActivity implements OnRippleCompleteLis
 
     MaterialViewPager_license = (RippleView) findViewById(R.id.MaterialViewPager_license);
     MaterialViewPager_license.setOnRippleCompleteListener(this);
+
     RippleEffect_license = (RippleView) findViewById(R.id.RippleEffect_license);
     RippleEffect_license.setOnRippleCompleteListener(this);
+
     FloatingActionButton_license = (RippleView) findViewById(R.id.FloatingActionButton_license);
     FloatingActionButton_license.setOnRippleCompleteListener(this);
+
     ParallaxPagerTransformer_license = (RippleView) findViewById(R.id.ParallaxPagerTransformer_license);
     ParallaxPagerTransformer_license.setOnRippleCompleteListener(this);
+
     shimmer_license = (RippleView) findViewById(R.id.shimmer_license);
     shimmer_license.setOnRippleCompleteListener(this);
+
     androidBootstrap_license = (RippleView) findViewById(R.id.androidBootstrap_license);
     androidBootstrap_license.setOnRippleCompleteListener(this);
+
     GoogleMaterialIcon_license = (RippleView) findViewById(R.id.GoogleMaterialIcon_license);
     GoogleMaterialIcon_license.setOnRippleCompleteListener(this);
 

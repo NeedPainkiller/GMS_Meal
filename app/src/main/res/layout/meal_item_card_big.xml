@@ -5,7 +5,8 @@
                                  android:layout_height="wrap_content"
                                  app:rv_zoom="true"
                                  app:rv_color="@null"
-                                 android:background="@null">
+                                 android:background="@null"
+                                 android:id="@+id/mealBigRipple">
 
 
   <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"

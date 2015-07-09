@@ -72,7 +72,7 @@ public class LunchViewFragment extends Fragment {
     mRecyclerView.setLayoutManager(layoutManager);
     mRecyclerView.setHasFixedSize(true);
 
-    mAdapter = new RecyclerViewMaterialAdapter(new MealRecyclerViewAdapter(mealItemDataArrayList));
+    mAdapter = new RecyclerViewMaterialAdapter(new MealRecyclerViewAdapter(mealItemDataArrayList, getActivity()));
     mRecyclerView.setAdapter(mAdapter);
     dataBaseAdmin = new DataBaseAdmin(context);
     dataBaseAdmin.open();
@@ -183,6 +183,7 @@ public class LunchViewFragment extends Fragment {
     } catch (Exception e) {
       Log.e("lunch", "lunch : " + e.getMessage());
 
+
       editor.putBoolean("canAlarm", false);
       editor.commit();
       dataBaseAdmin.deleteAll();
@@ -199,6 +200,8 @@ public class LunchViewFragment extends Fragment {
         getMeal = new GetMeal("lunch", pos);
         getMeal.execute(i);
       }
+
+
     } finally {
       CreateDB.CreateDataBase.reset = false;
     }
