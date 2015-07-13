@@ -11,7 +11,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -96,7 +95,7 @@ public class RateViewFragment extends Fragment {
           }
           Collections.reverse(rateItemDataArrayList);
         } catch (Exception e) {
-          Log.e("postErr", "JSON is fucked");
+//          Log.e("postErr", "JSON is fucked");
 //          Log.e("postErr", e.getMessage());
           rateItemDataArrayList.add(new RateItemData("0", "DB Error", "DB 서버주소가 누락되었습니다."));
 

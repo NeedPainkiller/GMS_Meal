@@ -2,7 +2,6 @@ package com.gms.gms_meal.lib;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.util.Log;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -624,7 +623,7 @@ public class FontAwesome {
       try {
         font = Typeface.createFromAsset(context.getAssets(), "fontawesome-webfont.ttf");
       } catch (Exception e) {
-        Log.e("BButton", "Could not get typeface because " + e.getMessage());
+//        Log.e("BButton", "Could not get typeface because " + e.getMessage());
         font = Typeface.DEFAULT;
       }
     }

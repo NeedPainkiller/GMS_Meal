@@ -10,7 +10,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -118,7 +117,7 @@ public class DinnerViewFragment extends Fragment {
 
     boolean find = false;
 
-    Log.e("Dinner", "find = " + find);
+//    Log.e("Dinner", "find = " + find);
     while (cursor.moveToNext()) {
 
       if (index.equals(cursor.getString(cursor.getColumnIndex("date"))) || find == true) {

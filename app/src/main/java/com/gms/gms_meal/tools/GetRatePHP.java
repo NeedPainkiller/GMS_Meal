@@ -8,7 +8,6 @@ package com.gms.gms_meal.tools;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Message;
-import android.util.Log;
 
 import com.gms.gms_meal.Rate_Package.RateViewFragment;
 
@@ -41,7 +40,7 @@ public class GetRatePHP extends AsyncTask<Void, Void, String> {
       HttpEntity httpEntity = httpResponse.getEntity();
 
       if (httpEntity != null) {
-        Log.w("reponse", "is null");
+//        Log.w("reponse", "is null");
       }
       String result = EntityUtils.toString(httpEntity);
       return result;
@@ -60,7 +59,7 @@ public class GetRatePHP extends AsyncTask<Void, Void, String> {
     super.onPostExecute(resource);
 
     Bundle data = new Bundle();
-    Log.e("resource", resource);
+//    Log.e("resource", resource);
 
     data.putString("rate", resource);
 

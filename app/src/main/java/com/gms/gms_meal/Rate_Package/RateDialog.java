@@ -10,7 +10,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 
@@ -124,7 +123,7 @@ public class RateDialog extends Dialog implements RippleView.OnRippleCompleteLis
         return true;
 
       } catch (Exception e) {
-        Log.e("Rate", "is fucked : " + e.getMessage());
+//        Log.e("Rate", "is fucked : " + e.getMessage());
         return false;
       } finally {
         dismiss();

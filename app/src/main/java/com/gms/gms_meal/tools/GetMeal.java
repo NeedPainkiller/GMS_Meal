@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Message;
-import android.util.Log;
 
 import com.gms.gms_meal.Meal_Package.DinnerViewFragment;
 import com.gms.gms_meal.Meal_Package.LunchViewFragment;
@@ -151,7 +150,7 @@ public class GetMeal extends AsyncTask<Integer, Void, String[]> {
       }
 
     } catch (Exception e) {// 에러발생시 실행.
-      Log.e("Meal", "succes " + e);
+//      Log.e("Meal", "succes " + e);
       // Lunch_Text.setText("데이터 연결을 확인해 주십시오.");// 에러이벤트와 함께 들어오는 메세지
       // 출력.
       info[2] = "데이터 연결을 확인해 주십시오.";
@@ -163,7 +162,7 @@ public class GetMeal extends AsyncTask<Integer, Void, String[]> {
     }
 
     for (int i = 0; i < info.length; i++) {
-      Log.e("get", "//" + info[i]);
+//      Log.e("get", "//" + info[i]);
     }
     return info;
   }
@@ -207,12 +206,12 @@ public class GetMeal extends AsyncTask<Integer, Void, String[]> {
 
       Lunch_page_Alpha = Lunch_page_Alpha.trim();
 
-      Log.e("text", Lunch_page_Alpha);
+//      Log.e("text", Lunch_page_Alpha);
 
       // Lunch_Text.setText(Lunch_page_Alpha);
 
     } catch (Exception e) {
-      Log.e("Meal", "succes " + e);
+//      Log.e("Meal", "succes " + e);
       Lunch_page_Alpha = "급식정보가 없습니다.";
       // Lunch_Text.setText("급식정보가 없습니다.");// 에러이벤트와 함께 들어오는 메세지 출력.
     }
@@ -227,8 +226,8 @@ public class GetMeal extends AsyncTask<Integer, Void, String[]> {
 
       Dinner_Start = Dinner_page_Alpha.indexOf("석식");
       Dinner_End = Dinner_page_Alpha.indexOf("<!--중앙 컨텐츠 영역 끝-->");
-      Log.e("DS", "" + Dinner_Start);
-      Log.e("DE", "" + Dinner_End);
+//      Log.e("DS", "" + Dinner_Start);
+//      Log.e("DE", "" + Dinner_End);
 
       Dinner_page_Alpha = Dinner_page_Alpha.substring(Dinner_Start, Dinner_End);
       Dinner_End = Dinner_page_Alpha.indexOf("에너지");
@@ -242,7 +241,7 @@ public class GetMeal extends AsyncTask<Integer, Void, String[]> {
 
       Dinner_page_Alpha = Dinner_page_Alpha.trim();
 
-      Log.e("text", Dinner_page_Alpha);
+//      Log.e("text", Dinner_page_Alpha);
 
       // Dinner_Text.setText(Dinner_page_Alpha);
 
