@@ -15,6 +15,7 @@ import android.view.Window;
 
 import com.andexert.library.RippleView;
 import com.gms.gms_meal.R;
+import com.gms.gms_meal.SERVER_SECURITY;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -107,7 +108,7 @@ public class RateDialog extends Dialog implements RippleView.OnRippleCompleteLis
       postRateValues.add(new BasicNameValuePair("rate", rate));
       postRateValues.add(new BasicNameValuePair("date", date));
       HttpClient httpClient = new DefaultHttpClient();
-      HttpPost httpPost = new HttpPost("http://ppcj2.iptime.org/~kang/postRate.php");
+      HttpPost httpPost = new HttpPost(SERVER_SECURITY.POST_RATE);
 
       HttpParams httpParams = httpClient.getParams();
       httpPost.setParams(httpParams);
