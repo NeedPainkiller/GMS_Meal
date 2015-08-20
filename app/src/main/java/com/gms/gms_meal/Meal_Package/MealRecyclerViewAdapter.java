@@ -45,21 +45,13 @@ public class MealRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
 
   @Override
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    View view = null;
-
     switch (viewType) {
       case TYPE_HEADER: {
-//                view = LayoutInflater.from(parent.getContext())
-//                        .inflate(R.layout.meal_item_card_big, parent, false);
-//                return new RecyclerView.ViewHolder(view) {
-//                };
+//
         return new BigCardMeal(LayoutInflater.from(parent.getContext()).inflate(R.layout.meal_item_card_big, parent, false));
       }
       case TYPE_CELL: {
-//                view = LayoutInflater.from(parent.getContext())
-//                        .inflate(R.layout.meal_item_card_small, parent, false);
-//                return new RecyclerView.ViewHolder(view) {
-//                };
+//
         return new SmallCardMeal(LayoutInflater.from(parent.getContext()).inflate(R.layout.meal_item_card_small, parent, false));
 
       }

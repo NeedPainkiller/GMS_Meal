@@ -14,7 +14,10 @@ android {
   }
 
 
-
+  lintOptions {
+    abortOnError false
+    checkReleaseBuilds false
+  }
 
   buildTypes {
     release {
@@ -45,4 +48,6 @@ dependencies {
   compile 'com.android.support:support-v4:22.2.0'
   compile 'com.android.support:design:22.2.0'
   compile 'jp.wasabeef:recyclerview-animators:1.2.0@aar'
+  compile files('src/main/assets/._CaulySDK-3.3.30.jar')
+  compile files('src/main/res/lib/CaulySDK-3.3.30.jar')
 }

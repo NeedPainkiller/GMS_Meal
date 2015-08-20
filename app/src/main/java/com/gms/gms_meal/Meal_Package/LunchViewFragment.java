@@ -19,6 +19,7 @@ import com.github.florent37.materialviewpager.MaterialViewPagerHelper;
 import com.github.florent37.materialviewpager.adapter.RecyclerViewMaterialAdapter;
 import com.gms.gms_meal.DB.CreateDB;
 import com.gms.gms_meal.DB.DataBaseAdmin;
+import com.gms.gms_meal.MainActivity;
 import com.gms.gms_meal.R;
 import com.gms.gms_meal.tools.GetMeal;
 
@@ -47,10 +48,10 @@ public class LunchViewFragment extends Fragment {
   private SharedPreferences sharedPreferences;
   private SharedPreferences.Editor editor;
 
-  public LunchViewFragment(int position, Context context, View v) {
-    pos = position;
-    this.context = context;
-    this.v = v;
+  public LunchViewFragment() {
+    pos = 0;
+    this.context = MainActivity.context;
+    this.v = MainActivity.v;
   }
 
   public LunchViewFragment getFrag() {

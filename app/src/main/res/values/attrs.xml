@@ -20,5 +20,15 @@
     <attr name="fa_icon" format="string"/>
   </declare-styleable>
 
+  <declare-styleable name="com.cauly.android.ad.AdView">
+    <attr name="appcode" format="string" />
+    <attr name="effect" format="string" />
+    <attr name="dynamicReloadInterval" format="boolean" />
+    <attr name="reloadInterval" format="integer" />
+    <attr name="threadPriority" format="integer" />
+    <attr name="bannerHeight" format="string" />
+    <attr name="enableDefaultBannerAd" format="boolean" />
+  </declare-styleable>
+
 
 </resources>

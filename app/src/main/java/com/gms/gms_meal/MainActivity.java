@@ -1,9 +1,12 @@
 package com.gms.gms_meal;
 
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,12 +20,14 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.SparseArray;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.andexert.library.RippleView;
 import com.andexert.library.RippleView.OnRippleCompleteListener;
@@ -64,7 +69,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
   private FloatingActionButton Main_Lunch;
   private SharedPreferences sharedPreferences;
   private SharedPreferences.Editor editor;
-  private View v;
+  public static View v;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -185,11 +190,11 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
         switch (i) {
           case 0:
 
-            LunchViewFragment lunchRecyclerViewFragment = new LunchViewFragment(0, getApplicationContext(), v).getFrag();
+            LunchViewFragment lunchRecyclerViewFragment = new LunchViewFragment().getFrag();
             return lunchRecyclerViewFragment;
 
           case 1:
-            DinnerViewFragment dinnerRecyclerViewFragment = new DinnerViewFragment(1, getApplicationContext(), v).getFrag();
+            DinnerViewFragment dinnerRecyclerViewFragment = new DinnerViewFragment().getFrag();
             return dinnerRecyclerViewFragment;
 
           default:
@@ -424,6 +429,36 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
       case R.id.nav_RippleGithub:
         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/kam6512/GMS_Meal")));
         break;
+    }
+  }
+  public void getFirstExe() {
+    SharedPreferences pref = getSharedPreferences("VER", 0);
+
+    try {
+      PackageManager pm = this.getPackageManager();
+      PackageInfo packageInfo = pm.getPackageInfo(getPackageName(), 0);
+      int VERSION = packageInfo.versionCode;
+      int old_Ver = pref.getInt("version", 0);
+
+      if (old_Ver < VERSION) {
+        TextView msg = new TextView(this);
+        msg.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
+        msg.setTextColor(0xffffffff);
+        msg.setText(R.string.update);
+
+        new AlertDialog.Builder(this)
+            .setTitle("업데이트 내역")
+            .setView(msg)
+            .setPositiveButton("확인", null)
+            .show();
+
+        SharedPreferences.Editor edit = pref.edit();
+        edit.putInt("version", VERSION);
+        edit.commit();
+//        new Dat
+      }
+
+    } catch (Exception e) {
     }
   }
 }

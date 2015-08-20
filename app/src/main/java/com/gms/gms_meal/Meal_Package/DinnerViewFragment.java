@@ -18,6 +18,7 @@ import com.github.florent37.materialviewpager.MaterialViewPagerHelper;
 import com.github.florent37.materialviewpager.adapter.RecyclerViewMaterialAdapter;
 import com.gms.gms_meal.DB.CreateDB;
 import com.gms.gms_meal.DB.DataBaseAdmin;
+import com.gms.gms_meal.MainActivity;
 import com.gms.gms_meal.R;
 
 import java.text.SimpleDateFormat;
@@ -40,10 +41,11 @@ public class DinnerViewFragment extends Fragment {
 
   private Cursor cursor;
 
-  public DinnerViewFragment(int position, Context context, View v) {
-    pos = position;
-    this.context = context;
-    this.v = v;
+
+  public DinnerViewFragment() {
+    pos =1 ;
+    this.context = MainActivity.context;
+    this.v = MainActivity.v;
   }
 
   public DinnerViewFragment getFrag() {
