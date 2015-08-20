@@ -229,7 +229,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
             break;
 
           case 2:
-            imgUrl = "http://ppcj2.iptime.org/~kang/image/poster.png";
+            imgUrl = SERVER_SECURITY.GET_PIC;
             color = getResources().getColor(R.color.cyan);
             break;
         }
