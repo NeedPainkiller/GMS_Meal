@@ -98,10 +98,12 @@
     http://google.github.io/material-design-icons/#getting-icons - CC BY 4.0
   </string>
 
-  <string name="update">"0.5 BETA 버전
+  <string name="update">"1.0.1버전
+    1.롤리팝이상 버젼의 호환성 문제 해결
+    2.젤리빈까지 호환 확대
+    3.알림기능에 오류가 있을수 있음
+    "</string>
 
-    알림기능에 오류가 있을수 있음"</string>
-
-  <string name="err_title">"버그발견"</string>
+  <string name="err_title">"버그발생!!"</string>
   <string name="err_text">"개발자의 이메일로 로그를 보내주세요"</string>
 </resources>

@@ -174,6 +174,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             Main_Dinner.setLabelText("기초데이터가 없을 시에는 알람 설정이 불가능합니다.");
         }
         editor.commit();
+
+        getFirstExe();
     }
 
     @Override
@@ -448,7 +450,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             if (old_Ver < VERSION) {
                 TextView msg = new TextView(this);
                 msg.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
-                msg.setTextColor(0xffffffff);
+                msg.setTextColor(0x000000);
                 msg.setText(R.string.update);
 
                 new AlertDialog.Builder(this)
