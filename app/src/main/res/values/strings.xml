@@ -101,4 +101,7 @@
   <string name="update">"0.5 BETA 버전
 
     알림기능에 오류가 있을수 있음"</string>
+
+  <string name="err_title">"버그발견"</string>
+  <string name="err_text">"개발자의 이메일로 로그를 보내주세요"</string>
 </resources>

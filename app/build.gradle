@@ -7,10 +7,10 @@ android {
   compileOptions.encoding = 'x-windows-949'
   defaultConfig {
     applicationId "com.gms.gms_meal"
-    minSdkVersion 19
+    minSdkVersion 16
     targetSdkVersion 22
-    versionCode 1
-    versionName "1.0"
+    versionCode 3
+    versionName "1.0.1.0"
   }
 
 
@@ -50,4 +50,6 @@ dependencies {
   compile 'jp.wasabeef:recyclerview-animators:1.2.0@aar'
   compile files('src/main/assets/._CaulySDK-3.3.30.jar')
   compile files('src/main/res/lib/CaulySDK-3.3.30.jar')
+  compile 'ch.acra:acra:4.6.2'
+  compile 'com.android.support:support-v13:23.0.0'
 }
