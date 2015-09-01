@@ -24,7 +24,6 @@ G밥은 경기모바일과학고등학교 학생들을 위한 급식알림 어�
 
 ## OverView
 
-7월 초 Google Play 등록예정 
 http://youtu.be/WeSt1NXLhw4
 
 ## Why GMS must used it?
