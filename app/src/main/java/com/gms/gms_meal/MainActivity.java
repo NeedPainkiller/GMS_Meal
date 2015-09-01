@@ -158,12 +158,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
         if (sharedPreferences.getBoolean("lunch", false)) {
             Main_Lunch.setImageResource(R.mipmap.ic_alarm_on);
+            Main_Lunch.setLabelText("점심알람 설정 (11:00)");
         } else {
             editor.putBoolean("lunch", false);
         }
 
         if (sharedPreferences.getBoolean("dinner", false)) {
             Main_Dinner.setImageResource(R.mipmap.ic_alarm_on);
+            Main_Dinner.setLabelText("석식알람 설정 (5:00)");
         } else {
             editor.putBoolean("dinner", false);
         }
@@ -450,7 +452,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             if (old_Ver < VERSION) {
                 TextView msg = new TextView(this);
                 msg.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
-                msg.setTextColor(0x000000);
+                msg.setTextColor(Color.parseColor("#000000"));
                 msg.setText(R.string.update);
 
                 new AlertDialog.Builder(this)
