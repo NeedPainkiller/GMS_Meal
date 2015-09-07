@@ -24,25 +24,48 @@ G밥은 경기모바일과학고등학교 학생들을 위한 급식알림 어�
 
 ## OverView
 
-http://youtu.be/WeSt1NXLhw4
+    http://youtu.be/WeSt1NXLhw4
 
 ## Why GMS must used it?
 
-1. 급식 저장기능
-2. 평점시스템 도입
-3. 데이터절약 가능!
+    1. 급식 저장기능
+    2. 평점시스템 도입
+    3. 데이터절약 가능!
 
-## Library
-* [MaterialViewPager](https://github.com/florent37/MaterialViewPager)
-* [RippleEffect](https://github.com/traex/RippleEffect)
-* [FloatingActionButton](https://github.com/Clans/FloatingActionButton)
-* [ParallaxPagerTransformer](https://github.com/xgc1986/ParallaxPagerTransformer)
-* [Shimmer-android](https://github.com/RomainPiel/Shimmer-android)
-* [Android-Bootstrap](https://github.com/Bearded-Hen/Android-Bootstrap)
-* [GoogleMaterialIcon](http://google.github.io/material-design-icons/#getting-icons)
+# Library
+    * [MaterialViewPager](https://github.com/florent37/MaterialViewPager)
+    * [RippleEffect](https://github.com/traex/RippleEffect)
+    * [FloatingActionButton](https://github.com/Clans/FloatingActionButton)
+    * [ParallaxPagerTransformer](https://github.com/xgc1986/ParallaxPagerTransformer)
+    * [Shimmer-android](https://github.com/RomainPiel/Shimmer-android)
+    * [Android-Bootstrap](https://github.com/Bearded-Hen/Android-Bootstrap)
+    * [GoogleMaterialIcon](http://google.github.io/material-design-icons/#getting-icons)
 
 
 
+# License
+
+    The MIT License (MIT)
+    
+    Copyright (c) 2015 kam6512
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
 </content>
 
 
