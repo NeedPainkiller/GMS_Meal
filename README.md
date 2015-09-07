@@ -24,7 +24,7 @@ G밥은 경기모바일과학고등학교 학생들을 위한 급식알림 어�
 
 ## OverView
 
-    http://youtu.be/WeSt1NXLhw4
+  http://youtu.be/WeSt1NXLhw4
 
 ## Why GMS must used it?
 
@@ -33,13 +33,13 @@ G밥은 경기모바일과학고등학교 학생들을 위한 급식알림 어�
     3. 데이터절약 가능!
 
 # Library
-    * [MaterialViewPager](https://github.com/florent37/MaterialViewPager)
-    * [RippleEffect](https://github.com/traex/RippleEffect)
-    * [FloatingActionButton](https://github.com/Clans/FloatingActionButton)
-    * [ParallaxPagerTransformer](https://github.com/xgc1986/ParallaxPagerTransformer)
-    * [Shimmer-android](https://github.com/RomainPiel/Shimmer-android)
-    * [Android-Bootstrap](https://github.com/Bearded-Hen/Android-Bootstrap)
-    * [GoogleMaterialIcon](http://google.github.io/material-design-icons/#getting-icons)
+  * [MaterialViewPager](https://github.com/florent37/MaterialViewPager)
+  * [RippleEffect](https://github.com/traex/RippleEffect)
+  * [FloatingActionButton](https://github.com/Clans/FloatingActionButton)
+  * [ParallaxPagerTransformer](https://github.com/xgc1986/ParallaxPagerTransformer)
+  * [Shimmer-android](https://github.com/RomainPiel/Shimmer-android)
+  * [Android-Bootstrap](https://github.com/Bearded-Hen/Android-Bootstrap)
+  * [GoogleMaterialIcon](http://google.github.io/material-design-icons/#getting-icons)
 
 
 
