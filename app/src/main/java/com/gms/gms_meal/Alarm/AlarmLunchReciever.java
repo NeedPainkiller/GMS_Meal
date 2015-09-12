@@ -13,6 +13,11 @@ public class AlarmLunchReciever extends BroadcastReceiver {
   @Override
   public void onReceive(Context context, Intent intent) {
     AlarmDialog alarmDialog = new AlarmDialog(MainActivity.context, true);
-    alarmDialog.show();
+    try {
+      alarmDialog.show();
+    }catch (Exception e){
+
+    }
+
   }
 }

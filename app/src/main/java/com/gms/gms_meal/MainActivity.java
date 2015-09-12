@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -71,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     public static View v;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -366,7 +368,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         switch (v.getId()) {
             case R.id.Main_facebook:    //ok
 
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/youngwon.kang.52")));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/kam6512")));
                 break;
             case R.id.Main_refresh: //ok
                 CreateDB.CreateDataBase.reset = true;
