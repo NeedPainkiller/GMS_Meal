@@ -229,17 +229,17 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
                     case 0:
 
-                        imgUrl = SERVER_SECURITY.GET_IMG1;
+                        imgUrl = ServerSecurity.GET_IMG1;
                         color = Color.parseColor("#4169e1");
                         break;
 
                     case 1:
-                        imgUrl = SERVER_SECURITY.GET_IMG2;
+                        imgUrl = ServerSecurity.GET_IMG2;
                         color = Color.parseColor("#000000");
                         break;
 
                     case 2:
-                        imgUrl = SERVER_SECURITY.GET_IMG3;
+                        imgUrl = ServerSecurity.GET_IMG3;
                         color = getResources().getColor(R.color.cyan);
                         break;
                 }

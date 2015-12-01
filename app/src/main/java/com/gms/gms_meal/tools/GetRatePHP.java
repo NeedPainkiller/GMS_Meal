@@ -10,7 +10,7 @@ import android.os.Bundle;
 import android.os.Message;
 
 import com.gms.gms_meal.Rate_Package.RateViewFragment;
-import com.gms.gms_meal.SERVER_SECURITY;
+import com.gms.gms_meal.ServerSecurity;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -34,7 +34,7 @@ public class GetRatePHP extends AsyncTask<Void, Void, String> {
   protected String doInBackground(Void... params) {
 
     HttpClient httpClient = new DefaultHttpClient();
-    HttpGet httpGet = new HttpGet(SERVER_SECURITY.GET_RATE);
+    HttpGet httpGet = new HttpGet(ServerSecurity.GET_RATE);
 
     try {
       HttpResponse httpResponse = httpClient.execute(httpGet);
