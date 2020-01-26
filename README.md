@@ -3,14 +3,6 @@
 GMS급식 알림 / 커뮤니티 서비스를 진행. 현 개발중이며(6월)앞으로도 많은 수정이 있을 것입니다.
 GMS 모바일 프로그래밍 수업의 수행평가 결과물이며 [G밥 - Google Play](https://play.google.com/store/apps/details?id=com.gms.gms_meal) 에서 다운로드 가능합니다.
 
----
-
-![Valid XHTML](http://ppcj2.iptime.org/~kang/image/poster.png).
-
----
-![Valid XHTML](http://ppcj2.iptime.org/~kang/image/launcher_shadow.png).
-
-------
 
   <content>
 # G밥
